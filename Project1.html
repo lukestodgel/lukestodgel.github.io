@@ -1,0 +1,2353 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Braden Anderson and Luke Stodgel" />
+
+<meta name="date" content="2021-10-23" />
+
+<title>Project 1</title>
+
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Luke Stodgel</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">About Me</a>
+</li>
+<li>
+  <a href="Project1.html">Beer Study</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Project 1</h1>
+<h4 class="author">Braden Anderson and Luke Stodgel</h4>
+<h4 class="date">10/23/2021</h4>
+
+</div>
+
+
+<div id="data-imports" class="section level2">
+<h2>Data Imports</h2>
+<pre><code>## Warning: package &#39;naniar&#39; was built under R version 4.1.1</code></pre>
+<pre><code>## Warning: package &#39;e1071&#39; was built under R version 4.1.1</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre><code>## Warning: package &#39;caret&#39; was built under R version 4.1.1</code></pre>
+<pre><code>## Loading required package: lattice</code></pre>
+<pre><code>## Warning: package &#39;class&#39; was built under R version 4.1.1</code></pre>
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 4.1.1</code></pre>
+<pre><code>## -- Attaching packages ---------------------------------------------------------------- tidyverse 1.3.1 --</code></pre>
+<pre><code>## v tibble  3.1.3     v purrr   0.3.4
+## v tidyr   1.1.3     v stringr 1.4.0
+## v readr   2.0.1     v forcats 0.5.1</code></pre>
+<pre><code>## Warning: package &#39;readr&#39; was built under R version 4.1.1</code></pre>
+<pre><code>## Warning: package &#39;forcats&#39; was built under R version 4.1.1</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------------------------------- tidyverse_conflicts() --
+## x tidyr::extract()   masks magrittr::extract()
+## x dplyr::filter()    masks stats::filter()
+## x dplyr::lag()       masks stats::lag()
+## x purrr::lift()      masks caret::lift()
+## x purrr::set_names() masks magrittr::set_names()</code></pre>
+<pre><code>## Warning: package &#39;maps&#39; was built under R version 4.1.1</code></pre>
+<pre><code>## 
+## Attaching package: &#39;maps&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     map</code></pre>
+<pre><code>## Warning: package &#39;mapproj&#39; was built under R version 4.1.1</code></pre>
+<pre><code>##   Brew_ID                      Name          City State
+## 1       1        NorthGate Brewing    Minneapolis    MN
+## 2       2 Against the Grain Brewery    Louisville    KY
+## 3       3  Jack&#39;s Abby Craft Lagers    Framingham    MA
+## 4       4 Mike Hess Brewing Company     San Diego    CA
+## 5       5   Fort Point Beer Company San Francisco    CA
+## 6       6     COAST Brewing Company    Charleston    SC</code></pre>
+</div>
+<div id="how-many-breweries-are-present-in-each-state" class="section level2">
+<h2>How many breweries are present in each state?</h2>
+<pre><code>##   State Breweries
+## 1    AK         7
+## 2    AL         3
+## 3    AR         2
+## 4    AZ        11
+## 5    CA        39
+## 6    CO        47</code></pre>
+</div>
+<div id="how-many-breweries-are-present-in-each-state-set-up-for-visualization." class="section level2">
+<h2>How many breweries are present in each state (set up for visualization).</h2>
+</div>
+<div id="question-1-visualize-breweries-by-state" class="section level2">
+<h2>Question 1: Visualize breweries by state</h2>
+<p><img src="Project1_files/figure-html/unnamed-chunk-5-1.png" width="960" /> ## Question 2: Merge beer data with the breweries data</p>
+<pre><code>##   Brewery_id     Beer_Name Beer_ID   ABV IBU                               Style Ounces
+## 1          1  Get Together    2692 0.045  50                        American IPA     16
+## 2          1 Maggie&#39;s Leap    2691 0.049  26                  Milk / Sweet Stout     16
+## 3          1    Wall&#39;s End    2690 0.048  19                   English Brown Ale     16
+## 4          1       Pumpion    2689 0.060  38                         Pumpkin Ale     16
+## 5          1    Stronghold    2688 0.060  25                     American Porter     16
+## 6          1   Parapet ESB    2687 0.056  47 Extra Special / Strong Bitter (ESB)     16
+##         Brewery_Name        City State
+## 1 NorthGate Brewing  Minneapolis    MN
+## 2 NorthGate Brewing  Minneapolis    MN
+## 3 NorthGate Brewing  Minneapolis    MN
+## 4 NorthGate Brewing  Minneapolis    MN
+## 5 NorthGate Brewing  Minneapolis    MN
+## 6 NorthGate Brewing  Minneapolis    MN</code></pre>
+</div>
+<div id="question-3-address-the-missing-values." class="section level2">
+<h2>Question 3: Address the missing values.</h2>
+<pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please use `guide = &quot;none&quot;`
+## instead.</code></pre>
+<p><img src="Project1_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre><code>##     Brewery_id                      Beer_Name Beer_ID   ABV IBU Style Ounces               Brewery_Name
+## 227         30                Special Release    2210    NA  NA           16        Cedar Creek Brewery
+## 455         67                  OktoberFiesta    2527 0.053  27           12   Freetail Brewing Company
+## 946        161 Kilt Lifter Scottish-Style Ale    1635 0.060  21           12 Four Peaks Brewing Company
+## 992        167                 The CROWLERâ„¢    1796    NA  NA           32        Oskar Blues Brewery
+## 993        167           CAN&#39;D AID Foundation    1790    NA  NA           12        Oskar Blues Brewery
+##             City State
+## 227 Seven Points    TX
+## 455  San Antonio    TX
+## 946        Tempe    AZ
+## 992     Longmont    CO
+## 993     Longmont    CO</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre><code>##  [1] Brewery_id   Beer_Name    Beer_ID      ABV          IBU          Style        Ounces      
+##  [8] Brewery_Name City         State       
+## &lt;0 rows&gt; (or 0-length row.names)</code></pre>
+<pre><code>## [1] 60</code></pre>
+<pre><code>##                        Beer_Name    ABV IBU                    Style                   Brewery_Name
+## 1                     Fat Paczki 0.0750  NA         Belgian Dark Ale                 Brewery Vivant
+## 2             Earth-Like Planets 0.0550  NA         Belgian Pale Ale                 Brewery Vivant
+## 3                    30 Min Coma 0.0450  NA              Belgian IPA       Sun King Brewing Company
+## 4         Bourbon Barrel Cowbell 0.0600  NA          American Porter       Sun King Brewing Company
+## 5                        Bastian 0.0620  NA      American Strong Ale     James Page Brewing Company
+## 6 WinterWonderGrass Festival Ale 0.0499  NA American Amber / Red Ale Crazy Mountain Brewing Company
+##            City State
+## 1  Grand Rapids    MI
+## 2  Grand Rapids    MI
+## 3  Indianapolis    IN
+## 4  Indianapolis    IN
+## 5 Stevens Point    WI
+## 6       Edwards    CO</code></pre>
+<pre><code>## [1] 10</code></pre>
+<pre><code>##      Brewery_id                   Beer_Name Beer_ID ABV IBU                      Style Ounces
+## 227          30             Special Release    2210  NA  NA   American Amber / Red Ale     16
+## 789         133                 Royal Lager    2364  NA  NA        American Pale Lager     16
+## 900         152               Fort Pitt Ale    2322  NA  NA   American Amber / Red Ale     12
+## 1887        381         Double Play Pilsner    1541  NA  NA           American Pilsner     12
+## 2227        485 Manhattan Gold Lager (1990)     963  NA  NA American Amber / Red Lager     12
+## 2259        498            THP White (2006)     870  NA  NA                    Witbier     12
+## 2260        498            THP Amber (2006)     869  NA  NA   American Amber / Red Ale     12
+## 2261        498            THP Light (2006)     868  NA  NA        American Blonde Ale     12
+## 2262        498             THP Dark (2006)     867  NA  NA      English Dark Mild Ale     12
+## 2351        532    Dolores River Hefeweizen     524  NA  NA                 Hefeweizen     16
+##                       Brewery_Name         City State
+## 227            Cedar Creek Brewery Seven Points    TX
+## 789         Weston Brewing Company       Weston    MO
+## 900      Fort Pitt Brewing Company      Latrobe    PA
+## 1887    Blue Blood Brewing Company      Lincoln    NE
+## 2227 The Manhattan Brewing Company     New York    NY
+## 2259          Cans Bar and Canteen    Charlotte    NC
+## 2260          Cans Bar and Canteen    Charlotte    NC
+## 2261          Cans Bar and Canteen    Charlotte    NC
+## 2262          Cans Bar and Canteen    Charlotte    NC
+## 2351         Dolores River Brewery      Dolores    CO</code></pre>
+<pre><code>##      Brewery_id                   Beer_Name Beer_ID ABV IBU                      Style Ounces
+## 789         133                 Royal Lager    2364  NA  NA        American Pale Lager     16
+## 900         152               Fort Pitt Ale    2322  NA  NA   American Amber / Red Ale     12
+## 1887        381         Double Play Pilsner    1541  NA  NA           American Pilsner     12
+## 2227        485 Manhattan Gold Lager (1990)     963  NA  NA American Amber / Red Lager     12
+## 2259        498            THP White (2006)     870  NA  NA                    Witbier     12
+## 2260        498            THP Amber (2006)     869  NA  NA   American Amber / Red Ale     12
+## 2261        498            THP Light (2006)     868  NA  NA        American Blonde Ale     12
+## 2262        498             THP Dark (2006)     867  NA  NA      English Dark Mild Ale     12
+## 2351        532    Dolores River Hefeweizen     524  NA  NA                 Hefeweizen     16
+##                       Brewery_Name      City State
+## 789         Weston Brewing Company    Weston    MO
+## 900      Fort Pitt Brewing Company   Latrobe    PA
+## 1887    Blue Blood Brewing Company   Lincoln    NE
+## 2227 The Manhattan Brewing Company  New York    NY
+## 2259          Cans Bar and Canteen Charlotte    NC
+## 2260          Cans Bar and Canteen Charlotte    NC
+## 2261          Cans Bar and Canteen Charlotte    NC
+## 2262          Cans Bar and Canteen Charlotte    NC
+## 2351         Dolores River Brewery   Dolores    CO</code></pre>
+<pre><code>##                        Style max_alch
+## 1           Abbey Single Ale    0.049
+## 2                    Altbier    0.072
+## 3     American Adjunct Lager    0.055
+## 4   American Amber / Red Ale    0.082
+## 5 American Amber / Red Lager    0.057
+## 6        American Barleywine    0.099</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 1003</code></pre>
+<pre><code>##                        Style avg_ibu
+## 1           Abbey Single Ale 22.0000
+## 2                    Altbier 34.1250
+## 3     American Adjunct Lager 11.0000
+## 4   American Amber / Red Ale 36.2987
+## 5 American Amber / Red Lager 23.2500
+## 6        American Barleywine 96.0000</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please use `guide = &quot;none&quot;`
+## instead.</code></pre>
+<p><img src="Project1_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+</div>
+<div id="question-4-compute-the-median-alcohol-content-and-ibus-for-each-state." class="section level2">
+<h2>Question 4: Compute the median alcohol content and IBUs for each state.</h2>
+</div>
+<div id="plot-a-bar-chart-to-compare." class="section level2">
+<h2>Plot a bar chart to compare.</h2>
+<pre><code>##   State median_abv median_ibu
+## 1    AK      0.056    33.8125
+## 2    AL      0.060    39.5000
+## 3    AR      0.052    36.2987
+## 4    AZ      0.055    22.2000
+## 5    CA      0.058    40.0000
+## 6    CO      0.060    36.2987</code></pre>
+<p><img src="Project1_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="Project1_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+</div>
+<div id="question-5-which-state-has-the-maximum-alcoholic-abv-beer" class="section level2">
+<h2>Question 5: Which state has the maximum alcoholic (ABV) beer?</h2>
+</div>
+<div id="which-state-has-the-most-bitter-ibu-beer" class="section level2">
+<h2>Which state has the most bitter (IBU) beer?</h2>
+<pre class="r"><code># Which state has the maximum alcoholic (ABV) beer?
+# Step 1 find highest ABV
+maxABV &lt;- max(combined_df$ABV, na.rm = TRUE)
+
+# Step 2 get Brewery_ID using max ABV
+maxABVBreweryID = combined_df %&gt;% filter(ABV == maxABV) %&gt;% select(Brewery_id)
+maxABVBreweryID = as.integer(maxABVBreweryID) # 52 - Upslope Brewing Company. What a coincidence my brother&#39;s old room mate used to work here when they lived in Boudler, CO.
+
+# Step 3 find state using maxABVBreweryID
+combined_df %&gt;% filter(Brewery_id == maxABVBreweryID) %&gt;% select(State)</code></pre>
+<pre><code>##    State
+## 1     CO
+## 2     CO
+## 3     CO
+## 4     CO
+## 5     CO
+## 6     CO
+## 7     CO
+## 8     CO
+## 9     CO
+## 10    CO
+## 11    CO
+## 12    CO
+## 13    CO
+## 14    CO
+## 15    CO
+## 16    CO
+## 17    CO
+## 18    CO</code></pre>
+<pre class="r"><code>#
+# It&#39;s Colorado (12.8% ABV) - Lee Hill Series Vol. 5 - Belgian Style Quadrupel Ale - 
+# Upslope Brewing Company, Boulder, CO.
+
+
+# Step 1 find highest IBU
+maxIBU &lt;- max(combined_df$IBU, na.rm = TRUE)
+
+# Step 2 get Brewery_id using max IBU
+maxIBUBreweryID = combined_df %&gt;% filter(IBU == maxIBU) %&gt;% select(Brewery_id)
+maxIBUBreweryID = as.integer(maxIBUBreweryID)
+
+# Step 3 find state using maxIBUBreweryID 
+combined_df %&gt;% filter(Brewery_id == maxIBUBreweryID) %&gt;% select(State)</code></pre>
+<pre><code>##   State
+## 1    OR
+## 2    OR
+## 3    OR
+## 4    OR</code></pre>
+<pre class="r"><code>#
+# It&#39;s Oregon (138 IBU) - Bitter Bitch Imperial IPA - American Double / Imperial IPA 
+# Astoria Brewing Company, Astoria, OR.</code></pre>
+</div>
+<div id="question-6-comment-on-the-summary-statistics-and-distribution" class="section level2">
+<h2>Question 6: Comment on the summary statistics and distribution</h2>
+</div>
+<div id="of-the-abv-variable." class="section level2">
+<h2>of the ABV variable.</h2>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## 0.00100 0.05000 0.05600 0.05977 0.06700 0.12800</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="Project1_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+</div>
+<div id="question-7-is-there-an-apparent-relationship-between-the-bitterness-of-the" class="section level2">
+<h2>Question 7: Is there an apparent relationship between the bitterness of the</h2>
+</div>
+<div id="beer-and-its-alcoholic-content-draw-a-scatter-plot." class="section level2">
+<h2>beer and its alcoholic content? Draw a scatter plot.</h2>
+</div>
+<div id="make-your-best-judgment-of-a-relationship-and" class="section level2">
+<h2>Make your best judgment of a relationship and</h2>
+</div>
+<div id="explain-your-answer." class="section level2">
+<h2>EXPLAIN your answer.</h2>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="Project1_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+</div>
+<div id="question-8-budweiser-would-also-like-to-investigate-the-difference-with" class="section level2">
+<h2>Question 8: Budweiser would also like to investigate the difference with</h2>
+</div>
+<div id="respect-to-ibu-and-abv-between-ipas-india-pale-ales-and-other" class="section level2">
+<h2>respect to IBU and ABV between IPAs (India Pale Ales) and other</h2>
+</div>
+<div id="types-of-ale-any-beer-with-ale-in-its-name-other-than-ipa." class="section level2">
+<h2>types of Ale (any beer with “Ale” in its name other than IPA).</h2>
+</div>
+<div id="you-decide-to-use-knn-classification-to-investigate-this" class="section level2">
+<h2>You decide to use KNN classification to investigate this</h2>
+</div>
+<div id="relationship.-provide-statistical-evidence-one-way-or-the-other." class="section level2">
+<h2>relationship. Provide statistical evidence one way or the other.</h2>
+</div>
+<div id="you-can-of-course-assume-your-audience-is-comfortable-with" class="section level2">
+<h2>You can of course assume your audience is comfortable with</h2>
+</div>
+<div id="percentages-knn-is-very-easy-to-understand-conceptually." class="section level2">
+<h2>percentages … KNN is very easy to understand conceptually.</h2>
+</div>
+<div id="in-addition-while-you-have-decided-to-use-knn-to-investigate" class="section level2">
+<h2>In addition, while you have decided to use KNN to investigate</h2>
+</div>
+<div id="this-relationship-knn-is-required-you-may-also-feel-free-to" class="section level2">
+<h2>this relationship (KNN is required) you may also feel free to</h2>
+</div>
+<div id="supplement-your-response-to-this-question-with-any-other-methods" class="section level2">
+<h2>supplement your response to this question with any other methods</h2>
+</div>
+<div id="or-techniques-you-have-learned.-creativity-and-alternative" class="section level2">
+<h2>or techniques you have learned. Creativity and alternative</h2>
+</div>
+<div id="solutions-are-always-encouraged." class="section level2">
+<h2>solutions are always encouraged.</h2>
+<p><img src="Project1_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##                                 
+##                                  American Double / Imperial IPA American IPA American White IPA
+##   American Double / Imperial IPA                             92           12                  0
+##   American IPA                                               10          403                  4
+##   American White IPA                                          0            5                  5
+##   Belgian IPA                                                 0            3                  0
+##   English India Pale Ale (IPA)                                0            5                  0
+##                                 
+##                                  Belgian IPA English India Pale Ale (IPA)
+##   American Double / Imperial IPA           0                            1
+##   American IPA                             3                            4
+##   American White IPA                       0                            1
+##   Belgian IPA                             15                            0
+##   English India Pale Ale (IPA)             0                            8
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.9159          
+##                  95% CI : (0.8901, 0.9374)
+##     No Information Rate : 0.7496          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.7943          
+##                                           
+##  Mcnemar&#39;s Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: American Double / Imperial IPA Class: American IPA Class: American White IPA
+## Sensitivity                                         0.9020              0.9416                  0.555556
+## Specificity                                         0.9723              0.8531                  0.989324
+## Pos Pred Value                                      0.8762              0.9505                  0.454545
+## Neg Pred Value                                      0.9785              0.8299                  0.992857
+## Prevalence                                          0.1786              0.7496                  0.015762
+## Detection Rate                                      0.1611              0.7058                  0.008757
+## Detection Prevalence                                0.1839              0.7426                  0.019264
+## Balanced Accuracy                                   0.9371              0.8974                  0.772440
+##                      Class: Belgian IPA Class: English India Pale Ale (IPA)
+## Sensitivity                     0.83333                             0.57143
+## Specificity                     0.99458                             0.99102
+## Pos Pred Value                  0.83333                             0.61538
+## Neg Pred Value                  0.99458                             0.98925
+## Prevalence                      0.03152                             0.02452
+## Detection Rate                  0.02627                             0.01401
+## Detection Prevalence            0.03152                             0.02277
+## Balanced Accuracy               0.91395                             0.78123</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##                                 
+##                                  American Double / Imperial IPA American IPA American White IPA
+##   American Double / Imperial IPA                             89           16                  0
+##   American IPA                                               10          409                  4
+##   American White IPA                                          0            6                  5
+##   Belgian IPA                                                 0            3                  0
+##   English India Pale Ale (IPA)                                0            7                  0
+##                                 
+##                                  Belgian IPA English India Pale Ale (IPA)
+##   American Double / Imperial IPA           0                            0
+##   American IPA                             1                            0
+##   American White IPA                       0                            0
+##   Belgian IPA                             15                            0
+##   English India Pale Ale (IPA)             0                            6
+## 
+## Overall Statistics
+##                                          
+##                Accuracy : 0.9177         
+##                  95% CI : (0.892, 0.9389)
+##     No Information Rate : 0.7723         
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16      
+##                                          
+##                   Kappa : 0.7907         
+##                                          
+##  Mcnemar&#39;s Test P-Value : NA             
+## 
+## Statistics by Class:
+## 
+##                      Class: American Double / Imperial IPA Class: American IPA Class: American White IPA
+## Sensitivity                                         0.8990              0.9274                  0.555556
+## Specificity                                         0.9661              0.8846                  0.989324
+## Pos Pred Value                                      0.8476              0.9646                  0.454545
+## Neg Pred Value                                      0.9785              0.7823                  0.992857
+## Prevalence                                          0.1734              0.7723                  0.015762
+## Detection Rate                                      0.1559              0.7163                  0.008757
+## Detection Prevalence                                0.1839              0.7426                  0.019264
+## Balanced Accuracy                                   0.9325              0.9060                  0.772440
+##                      Class: Belgian IPA Class: English India Pale Ale (IPA)
+## Sensitivity                     0.93750                             1.00000
+## Specificity                     0.99459                             0.98761
+## Pos Pred Value                  0.83333                             0.46154
+## Neg Pred Value                  0.99819                             1.00000
+## Prevalence                      0.02802                             0.01051
+## Detection Rate                  0.02627                             0.01051
+## Detection Prevalence            0.03152                             0.02277
+## Balanced Accuracy               0.96605                             0.99381</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##                                 
+##                                  American Double / Imperial IPA American IPA American White IPA
+##   American Double / Imperial IPA                             84           21                  0
+##   American IPA                                               13          408                  2
+##   American White IPA                                          0           11                  0
+##   Belgian IPA                                                 0            3                  0
+##   English India Pale Ale (IPA)                                1           11                  0
+##                                 
+##                                  Belgian IPA English India Pale Ale (IPA)
+##   American Double / Imperial IPA           0                            0
+##   American IPA                             1                            0
+##   American White IPA                       0                            0
+##   Belgian IPA                             15                            0
+##   English India Pale Ale (IPA)             0                            1
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.8897          
+##                  95% CI : (0.8611, 0.9142)
+##     No Information Rate : 0.7951          
+##     P-Value [Acc &gt; NIR] : 1.403e-09       
+##                                           
+##                   Kappa : 0.7074          
+##                                           
+##  Mcnemar&#39;s Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: American Double / Imperial IPA Class: American IPA Class: American White IPA
+## Sensitivity                                         0.8571              0.8987                  0.000000
+## Specificity                                         0.9556              0.8632                  0.980668
+## Pos Pred Value                                      0.8000              0.9623                  0.000000
+## Neg Pred Value                                      0.9700              0.6871                  0.996429
+## Prevalence                                          0.1716              0.7951                  0.003503
+## Detection Rate                                      0.1471              0.7145                  0.000000
+## Detection Prevalence                                0.1839              0.7426                  0.019264
+## Balanced Accuracy                                   0.9064              0.8810                  0.490334
+##                      Class: Belgian IPA Class: English India Pale Ale (IPA)
+## Sensitivity                     0.93750                            1.000000
+## Specificity                     0.99459                            0.978947
+## Pos Pred Value                  0.83333                            0.076923
+## Neg Pred Value                  0.99819                            1.000000
+## Prevalence                      0.02802                            0.001751
+## Detection Rate                  0.02627                            0.001751
+## Detection Prevalence            0.03152                            0.022767
+## Balanced Accuracy               0.96605                            0.989474</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##                                 
+##                                  American Double / Imperial IPA American IPA American White IPA
+##   American Double / Imperial IPA                             78           27                  0
+##   American IPA                                               33          382                  0
+##   American White IPA                                          0           11                  0
+##   Belgian IPA                                                 0            3                  0
+##   English India Pale Ale (IPA)                                1            6                  0
+##                                 
+##                                  Belgian IPA English India Pale Ale (IPA)
+##   American Double / Imperial IPA           0                            0
+##   American IPA                             9                            0
+##   American White IPA                       0                            0
+##   Belgian IPA                             15                            0
+##   English India Pale Ale (IPA)             6                            0
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.8319          
+##                  95% CI : (0.7986, 0.8616)
+##     No Information Rate : 0.7513          
+##     P-Value [Acc &gt; NIR] : 2.265e-06       
+##                                           
+##                   Kappa : 0.5842          
+##                                           
+##  Mcnemar&#39;s Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: American Double / Imperial IPA Class: American IPA Class: American White IPA
+## Sensitivity                                         0.6964              0.8904                        NA
+## Specificity                                         0.9412              0.7042                   0.98074
+## Pos Pred Value                                      0.7429              0.9009                        NA
+## Neg Pred Value                                      0.9270              0.6803                        NA
+## Prevalence                                          0.1961              0.7513                   0.00000
+## Detection Rate                                      0.1366              0.6690                   0.00000
+## Detection Prevalence                                0.1839              0.7426                   0.01926
+## Balanced Accuracy                                   0.8188              0.7973                        NA
+##                      Class: Belgian IPA Class: English India Pale Ale (IPA)
+## Sensitivity                     0.50000                                  NA
+## Specificity                     0.99445                             0.97723
+## Pos Pred Value                  0.83333                                  NA
+## Neg Pred Value                  0.97288                                  NA
+## Prevalence                      0.05254                             0.00000
+## Detection Rate                  0.02627                             0.00000
+## Detection Prevalence            0.03152                             0.02277
+## Balanced Accuracy               0.74723                                  NA</code></pre>
+<p><img src="Project1_files/figure-html/unnamed-chunk-27-2.png" width="672" /></p>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##                           
+##                            Abbey Single Ale American Amber / Red Ale American Black Ale
+##   Abbey Single Ale                        1                        0                  0
+##   American Amber / Red Ale                0                       87                  4
+##   American Black Ale                      0                        4                 28
+##   American Blonde Ale                     0                        7                  1
+##   American Brown Ale                      0                        5                  1
+##   American Dark Wheat Ale                 0                        0                  0
+##   American Pale Ale (APA)                 0                       19                  0
+##   American Pale Wheat Ale                 0                        4                  0
+##   American Strong Ale                     0                        3                  2
+##   American Wild Ale                       0                        1                  0
+##   Belgian Dark Ale                        0                        1                  0
+##   Belgian Pale Ale                        0                        0                  0
+##   Belgian Strong Dark Ale                 0                        2                  0
+##   Belgian Strong Pale Ale                 0                        0                  0
+##   Cream Ale                               1                        1                  0
+##   English Brown Ale                       0                        0                  1
+##   English Dark Mild Ale                   1                        0                  0
+##   English Pale Ale                        0                        0                  0
+##   English Pale Mild Ale                   0                        0                  0
+##   English Strong Ale                      0                        0                  0
+##   Flanders Red Ale                        0                        0                  0
+##   Irish Red Ale                           0                        2                  1
+##   Old Ale                                 0                        0                  0
+##   Pumpkin Ale                             0                        2                  0
+##   Saison / Farmhouse Ale                  0                        6                  0
+##   Scotch Ale / Wee Heavy                  0                        0                  0
+##   Scottish Ale                            0                        1                  0
+##   Wheat Ale                               0                        1                  0
+##                           
+##                            American Blonde Ale American Brown Ale American Dark Wheat Ale
+##   Abbey Single Ale                           0                  0                       0
+##   American Amber / Red Ale                   9                  2                       1
+##   American Black Ale                         1                  0                       0
+##   American Blonde Ale                       75                  1                       1
+##   American Brown Ale                         3                 40                       0
+##   American Dark Wheat Ale                    2                  0                       4
+##   American Pale Ale (APA)                    3                  4                       2
+##   American Pale Wheat Ale                   10                  2                       1
+##   American Strong Ale                        0                  0                       0
+##   American Wild Ale                          0                  0                       0
+##   Belgian Dark Ale                           0                  0                       0
+##   Belgian Pale Ale                           1                  0                       0
+##   Belgian Strong Dark Ale                    0                  0                       0
+##   Belgian Strong Pale Ale                    0                  0                       0
+##   Cream Ale                                  3                  1                       0
+##   English Brown Ale                          2                  2                       0
+##   English Dark Mild Ale                      2                  0                       0
+##   English Pale Ale                           1                  0                       0
+##   English Pale Mild Ale                      1                  0                       0
+##   English Strong Ale                         0                  0                       0
+##   Flanders Red Ale                           0                  0                       0
+##   Irish Red Ale                              3                  1                       0
+##   Old Ale                                    0                  0                       0
+##   Pumpkin Ale                                3                  0                       0
+##   Saison / Farmhouse Ale                     3                  4                       0
+##   Scotch Ale / Wee Heavy                     1                  2                       0
+##   Scottish Ale                               1                  0                       0
+##   Wheat Ale                                  0                  0                       0
+##                           
+##                            American Pale Ale (APA) American Pale Wheat Ale American Strong Ale
+##   Abbey Single Ale                               0                       0                   0
+##   American Amber / Red Ale                      19                       1                   1
+##   American Black Ale                             0                       1                   1
+##   American Blonde Ale                            5                       7                   0
+##   American Brown Ale                            11                       2                   0
+##   American Dark Wheat Ale                        0                       1                   0
+##   American Pale Ale (APA)                      195                       5                   2
+##   American Pale Wheat Ale                        3                      68                   0
+##   American Strong Ale                            1                       1                   6
+##   American Wild Ale                              0                       0                   0
+##   Belgian Dark Ale                               0                       0                   0
+##   Belgian Pale Ale                               2                       2                   0
+##   Belgian Strong Dark Ale                        0                       0                   0
+##   Belgian Strong Pale Ale                        0                       0                   0
+##   Cream Ale                                      2                       2                   0
+##   English Brown Ale                              2                       1                   0
+##   English Dark Mild Ale                          0                       2                   0
+##   English Pale Ale                               3                       0                   0
+##   English Pale Mild Ale                          1                       0                   0
+##   English Strong Ale                             2                       0                   1
+##   Flanders Red Ale                               0                       0                   0
+##   Irish Red Ale                                  2                       1                   0
+##   Old Ale                                        0                       0                   2
+##   Pumpkin Ale                                    2                       1                   0
+##   Saison / Farmhouse Ale                         4                       0                   0
+##   Scotch Ale / Wee Heavy                         0                       0                   0
+##   Scottish Ale                                   0                       2                   0
+##   Wheat Ale                                      0                       0                   0
+##                           
+##                            American Wild Ale Belgian Dark Ale Belgian Pale Ale Belgian Strong Dark Ale
+##   Abbey Single Ale                         0                0                0                       0
+##   American Amber / Red Ale                 0                0                1                       1
+##   American Black Ale                       0                0                0                       0
+##   American Blonde Ale                      0                0                0                       0
+##   American Brown Ale                       0                0                0                       0
+##   American Dark Wheat Ale                  0                0                0                       0
+##   American Pale Ale (APA)                  0                0                1                       0
+##   American Pale Wheat Ale                  0                0                2                       0
+##   American Strong Ale                      0                0                0                       0
+##   American Wild Ale                        3                0                1                       0
+##   Belgian Dark Ale                         0                8                0                       0
+##   Belgian Pale Ale                         1                0               16                       0
+##   Belgian Strong Dark Ale                  0                0                0                       4
+##   Belgian Strong Pale Ale                  0                0                0                       0
+##   Cream Ale                                0                0                0                       0
+##   English Brown Ale                        0                0                0                       0
+##   English Dark Mild Ale                    0                0                0                       0
+##   English Pale Ale                         0                0                0                       0
+##   English Pale Mild Ale                    0                0                0                       0
+##   English Strong Ale                       0                0                0                       0
+##   Flanders Red Ale                         0                0                0                       0
+##   Irish Red Ale                            0                0                0                       0
+##   Old Ale                                  0                0                0                       0
+##   Pumpkin Ale                              0                0                1                       0
+##   Saison / Farmhouse Ale                   0                0                1                       0
+##   Scotch Ale / Wee Heavy                   1                0                0                       0
+##   Scottish Ale                             0                0                0                       0
+##   Wheat Ale                                0                0                0                       0
+##                           
+##                            Belgian Strong Pale Ale Cream Ale English Brown Ale English Dark Mild Ale
+##   Abbey Single Ale                               0         1                 0                     0
+##   American Amber / Red Ale                       0         0                 0                     0
+##   American Black Ale                             0         1                 0                     0
+##   American Blonde Ale                            0         2                 1                     0
+##   American Brown Ale                             0         1                 2                     0
+##   American Dark Wheat Ale                        0         0                 0                     0
+##   American Pale Ale (APA)                        0         2                 2                     0
+##   American Pale Wheat Ale                        0         2                 1                     1
+##   American Strong Ale                            0         0                 0                     0
+##   American Wild Ale                              0         0                 0                     0
+##   Belgian Dark Ale                               0         0                 0                     0
+##   Belgian Pale Ale                               0         0                 0                     0
+##   Belgian Strong Dark Ale                        0         0                 0                     0
+##   Belgian Strong Pale Ale                        7         0                 0                     0
+##   Cream Ale                                      0        18                 0                     1
+##   English Brown Ale                              0         0                 8                     1
+##   English Dark Mild Ale                          0         1                 0                     0
+##   English Pale Ale                               0         0                 0                     0
+##   English Pale Mild Ale                          0         0                 0                     0
+##   English Strong Ale                             0         0                 0                     0
+##   Flanders Red Ale                               0         0                 0                     0
+##   Irish Red Ale                                  0         0                 0                     1
+##   Old Ale                                        0         0                 0                     0
+##   Pumpkin Ale                                    0         0                 0                     0
+##   Saison / Farmhouse Ale                         0         1                 1                     0
+##   Scotch Ale / Wee Heavy                         0         0                 0                     0
+##   Scottish Ale                                   0         0                 0                     0
+##   Wheat Ale                                      0         0                 0                     0
+##                           
+##                            English Pale Ale English Pale Mild Ale English Strong Ale Flanders Red Ale
+##   Abbey Single Ale                        0                     0                  0                0
+##   American Amber / Red Ale                0                     0                  0                0
+##   American Black Ale                      0                     0                  0                0
+##   American Blonde Ale                     1                     2                  0                0
+##   American Brown Ale                      0                     0                  0                0
+##   American Dark Wheat Ale                 0                     0                  0                0
+##   American Pale Ale (APA)                 3                     0                  1                0
+##   American Pale Wheat Ale                 0                     0                  0                0
+##   American Strong Ale                     0                     0                  1                0
+##   American Wild Ale                       0                     0                  0                0
+##   Belgian Dark Ale                        0                     0                  0                0
+##   Belgian Pale Ale                        0                     0                  0                0
+##   Belgian Strong Dark Ale                 0                     0                  0                0
+##   Belgian Strong Pale Ale                 0                     0                  0                0
+##   Cream Ale                               0                     0                  0                0
+##   English Brown Ale                       0                     0                  0                0
+##   English Dark Mild Ale                   0                     0                  0                0
+##   English Pale Ale                        7                     0                  0                0
+##   English Pale Mild Ale                   0                     1                  0                0
+##   English Strong Ale                      0                     0                  0                0
+##   Flanders Red Ale                        0                     0                  0                0
+##   Irish Red Ale                           1                     0                  0                0
+##   Old Ale                                 0                     0                  0                0
+##   Pumpkin Ale                             0                     0                  0                0
+##   Saison / Farmhouse Ale                  0                     0                  0                0
+##   Scotch Ale / Wee Heavy                  0                     0                  1                0
+##   Scottish Ale                            0                     0                  0                0
+##   Wheat Ale                               0                     0                  0                0
+##                           
+##                            Irish Red Ale Old Ale Pumpkin Ale Saison / Farmhouse Ale
+##   Abbey Single Ale                     0       0           0                      0
+##   American Amber / Red Ale             1       0           2                      4
+##   American Black Ale                   0       0           0                      0
+##   American Blonde Ale                  0       0           3                      1
+##   American Brown Ale                   1       0           0                      3
+##   American Dark Wheat Ale              0       0           0                      0
+##   American Pale Ale (APA)              3       0           0                      3
+##   American Pale Wheat Ale              1       0           1                      0
+##   American Strong Ale                  0       0           0                      0
+##   American Wild Ale                    0       0           0                      0
+##   Belgian Dark Ale                     0       0           0                      1
+##   Belgian Pale Ale                     0       0           1                      1
+##   Belgian Strong Dark Ale              0       0           0                      0
+##   Belgian Strong Pale Ale              0       0           0                      0
+##   Cream Ale                            0       0           0                      0
+##   English Brown Ale                    1       0           0                      0
+##   English Dark Mild Ale                0       0           0                      0
+##   English Pale Ale                     1       0           0                      0
+##   English Pale Mild Ale                0       0           0                      0
+##   English Strong Ale                   0       0           0                      0
+##   Flanders Red Ale                     0       0           1                      0
+##   Irish Red Ale                        0       0           0                      0
+##   Old Ale                              0       0           0                      0
+##   Pumpkin Ale                          0       0          12                      1
+##   Saison / Farmhouse Ale               0       0           0                     32
+##   Scotch Ale / Wee Heavy               0       0           0                      2
+##   Scottish Ale                         0       0           0                      0
+##   Wheat Ale                            0       0           0                      0
+##                           
+##                            Scotch Ale / Wee Heavy Scottish Ale Wheat Ale
+##   Abbey Single Ale                              0            0         0
+##   American Amber / Red Ale                      0            0         1
+##   American Black Ale                            0            0         0
+##   American Blonde Ale                           0            1         0
+##   American Brown Ale                            0            1         0
+##   American Dark Wheat Ale                       0            0         0
+##   American Pale Ale (APA)                       0            0         0
+##   American Pale Wheat Ale                       0            1         0
+##   American Strong Ale                           0            0         0
+##   American Wild Ale                             1            0         0
+##   Belgian Dark Ale                              0            1         0
+##   Belgian Pale Ale                              0            0         0
+##   Belgian Strong Dark Ale                       0            0         0
+##   Belgian Strong Pale Ale                       0            0         0
+##   Cream Ale                                     0            0         0
+##   English Brown Ale                             0            0         0
+##   English Dark Mild Ale                         0            0         0
+##   English Pale Ale                              0            0         0
+##   English Pale Mild Ale                         0            0         0
+##   English Strong Ale                            1            0         0
+##   Flanders Red Ale                              0            0         0
+##   Irish Red Ale                                 0            0         0
+##   Old Ale                                       0            0         0
+##   Pumpkin Ale                                   1            0         0
+##   Saison / Farmhouse Ale                        0            0         0
+##   Scotch Ale / Wee Heavy                        7            1         0
+##   Scottish Ale                                  0           15         0
+##   Wheat Ale                                     0            0         0
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.666           
+##                  95% CI : (0.6352, 0.6957)
+##     No Information Rate : 0.2635          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.6183          
+##                                           
+##  Mcnemar&#39;s Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: Abbey Single Ale Class: American Amber / Red Ale Class: American Black Ale
+## Sensitivity                         0.333333                         0.59589                   0.73684
+## Specificity                         0.998959                         0.94254                   0.99136
+## Pos Pred Value                      0.500000                         0.64925                   0.77778
+## Neg Pred Value                      0.997921                         0.92892                   0.98922
+## Prevalence                          0.003112                         0.15145                   0.03942
+## Detection Rate                      0.001037                         0.09025                   0.02905
+## Detection Prevalence                0.002075                         0.13900                   0.03734
+## Balanced Accuracy                   0.666146                         0.76922                   0.86410
+##                      Class: American Blonde Ale Class: American Brown Ale Class: American Dark Wheat Ale
+## Sensitivity                              0.6048                   0.67797                       0.444444
+## Specificity                              0.9607                   0.96685                       0.996859
+## Pos Pred Value                           0.6944                   0.57143                       0.571429
+## Neg Pred Value                           0.9428                   0.97875                       0.994775
+## Prevalence                               0.1286                   0.06120                       0.009336
+## Detection Rate                           0.0778                   0.04149                       0.004149
+## Detection Prevalence                     0.1120                   0.07261                       0.007261
+## Balanced Accuracy                        0.7828                   0.82241                       0.720652
+##                      Class: American Pale Ale (APA) Class: American Pale Wheat Ale
+## Sensitivity                                  0.7677                        0.70103
+## Specificity                                  0.9296                        0.96655
+## Pos Pred Value                               0.7959                        0.70103
+## Neg Pred Value                               0.9179                        0.96655
+## Prevalence                                   0.2635                        0.10062
+## Detection Rate                               0.2023                        0.07054
+## Detection Prevalence                         0.2541                        0.10062
+## Balanced Accuracy                            0.8486                        0.83379
+##                      Class: American Strong Ale Class: American Wild Ale Class: Belgian Dark Ale
+## Sensitivity                            0.461538                 0.600000                1.000000
+## Specificity                            0.991588                 0.996872                0.996862
+## Pos Pred Value                         0.428571                 0.500000                0.727273
+## Neg Pred Value                         0.992632                 0.997912                1.000000
+## Prevalence                             0.013485                 0.005187                0.008299
+## Detection Rate                         0.006224                 0.003112                0.008299
+## Detection Prevalence                   0.014523                 0.006224                0.011411
+## Balanced Accuracy                      0.726563                 0.798436                0.998431
+##                      Class: Belgian Pale Ale Class: Belgian Strong Dark Ale
+## Sensitivity                          0.69565                       0.800000
+## Specificity                          0.99150                       0.997914
+## Pos Pred Value                       0.66667                       0.666667
+## Neg Pred Value                       0.99255                       0.998956
+## Prevalence                           0.02386                       0.005187
+## Detection Rate                       0.01660                       0.004149
+## Detection Prevalence                 0.02490                       0.006224
+## Balanced Accuracy                    0.84358                       0.898957
+##                      Class: Belgian Strong Pale Ale Class: Cream Ale Class: English Brown Ale
+## Sensitivity                                1.000000          0.62069                 0.533333
+## Specificity                                1.000000          0.98824                 0.989463
+## Pos Pred Value                             1.000000          0.62069                 0.444444
+## Neg Pred Value                             1.000000          0.98824                 0.992600
+## Prevalence                                 0.007261          0.03008                 0.015560
+## Detection Rate                             0.007261          0.01867                 0.008299
+## Detection Prevalence                       0.007261          0.03008                 0.018672
+## Balanced Accuracy                          1.000000          0.80446                 0.761398
+##                      Class: English Dark Mild Ale Class: English Pale Ale Class: English Pale Mild Ale
+## Sensitivity                              0.000000                0.583333                     0.333333
+## Specificity                              0.993750                0.994748                     0.997919
+## Pos Pred Value                           0.000000                0.583333                     0.333333
+## Neg Pred Value                           0.995825                0.994748                     0.997919
+## Prevalence                               0.004149                0.012448                     0.003112
+## Detection Rate                           0.000000                0.007261                     0.001037
+## Detection Prevalence                     0.006224                0.012448                     0.003112
+## Balanced Accuracy                        0.496875                0.789041                     0.665626
+##                      Class: English Strong Ale Class: Flanders Red Ale Class: Irish Red Ale
+## Sensitivity                           0.000000                      NA             0.000000
+## Specificity                           0.995838                0.998963             0.987448
+## Pos Pred Value                        0.000000                      NA             0.000000
+## Neg Pred Value                        0.996875                      NA             0.991597
+## Prevalence                            0.003112                0.000000             0.008299
+## Detection Rate                        0.000000                0.000000             0.000000
+## Detection Prevalence                  0.004149                0.001037             0.012448
+## Balanced Accuracy                     0.497919                      NA             0.493724
+##                      Class: Old Ale Class: Pumpkin Ale Class: Saison / Farmhouse Ale
+## Sensitivity                      NA            0.60000                       0.66667
+## Specificity                0.997925            0.98835                       0.97817
+## Pos Pred Value                   NA            0.52174                       0.61538
+## Neg Pred Value                   NA            0.99150                       0.98246
+## Prevalence                 0.000000            0.02075                       0.04979
+## Detection Rate             0.000000            0.01245                       0.03320
+## Detection Prevalence       0.002075            0.02386                       0.05394
+## Balanced Accuracy                NA            0.79417                       0.82242
+##                      Class: Scotch Ale / Wee Heavy Class: Scottish Ale Class: Wheat Ale
+## Sensitivity                               0.700000             0.75000         0.000000
+## Specificity                               0.991614             0.99576         0.998962
+## Pos Pred Value                            0.466667             0.78947         0.000000
+## Neg Pred Value                            0.996839             0.99471         0.998962
+## Prevalence                                0.010373             0.02075         0.001037
+## Detection Rate                            0.007261             0.01556         0.000000
+## Detection Prevalence                      0.015560             0.01971         0.001037
+## Balanced Accuracy                         0.845807             0.87288         0.499481</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##                           
+##                            Abbey Single Ale American Amber / Red Ale American Black Ale
+##   Abbey Single Ale                        0                        0                  0
+##   American Amber / Red Ale                0                       79                  4
+##   American Black Ale                      0                        0                 25
+##   American Blonde Ale                     0                        8                  0
+##   American Brown Ale                      1                        4                  0
+##   American Dark Wheat Ale                 0                        1                  0
+##   American Pale Ale (APA)                 0                        9                  2
+##   American Pale Wheat Ale                 1                        8                  0
+##   American Strong Ale                     0                        0                  5
+##   American Wild Ale                       0                        2                  0
+##   Belgian Dark Ale                        0                        1                  0
+##   Belgian Pale Ale                        0                        2                  0
+##   Belgian Strong Dark Ale                 0                        0                  0
+##   Belgian Strong Pale Ale                 0                        0                  0
+##   Cream Ale                               2                        5                  1
+##   English Brown Ale                       1                        0                  0
+##   English Dark Mild Ale                   3                        0                  0
+##   English Pale Ale                        0                        0                  0
+##   English Pale Mild Ale                   0                        0                  0
+##   English Strong Ale                      0                        0                  1
+##   Flanders Red Ale                        0                        0                  0
+##   Irish Red Ale                           0                        0                  0
+##   Old Ale                                 0                        1                  0
+##   Pumpkin Ale                             0                        2                  0
+##   Saison / Farmhouse Ale                  0                        6                  0
+##   Scotch Ale / Wee Heavy                  0                        2                  0
+##   Scottish Ale                            0                        0                  0
+##   Wheat Ale                               0                        1                  0
+##                           
+##                            American Blonde Ale American Brown Ale American Dark Wheat Ale
+##   Abbey Single Ale                           0                  0                       0
+##   American Amber / Red Ale                  12                  5                       0
+##   American Black Ale                         1                  0                       0
+##   American Blonde Ale                       79                  3                       0
+##   American Brown Ale                         8                 36                       0
+##   American Dark Wheat Ale                    2                  0                       0
+##   American Pale Ale (APA)                    1                  3                       2
+##   American Pale Wheat Ale                   13                  1                       0
+##   American Strong Ale                        0                  0                       0
+##   American Wild Ale                          0                  0                       0
+##   Belgian Dark Ale                           0                  0                       0
+##   Belgian Pale Ale                           3                  0                       0
+##   Belgian Strong Dark Ale                    0                  0                       0
+##   Belgian Strong Pale Ale                    0                  0                       0
+##   Cream Ale                                  3                  0                       0
+##   English Brown Ale                          5                  0                       0
+##   English Dark Mild Ale                      1                  1                       0
+##   English Pale Ale                           1                  0                       0
+##   English Pale Mild Ale                      2                  0                       0
+##   English Strong Ale                         0                  0                       0
+##   Flanders Red Ale                           0                  0                       1
+##   Irish Red Ale                              2                  0                       0
+##   Old Ale                                    0                  0                       0
+##   Pumpkin Ale                                3                  0                       0
+##   Saison / Farmhouse Ale                     5                  1                       0
+##   Scotch Ale / Wee Heavy                     1                  0                       0
+##   Scottish Ale                               3                  0                       0
+##   Wheat Ale                                  0                  0                       0
+##                           
+##                            American Pale Ale (APA) American Pale Wheat Ale American Strong Ale
+##   Abbey Single Ale                               0                       0                   0
+##   American Amber / Red Ale                      22                       1                   0
+##   American Black Ale                             6                       0                   2
+##   American Blonde Ale                            4                       7                   0
+##   American Brown Ale                            11                       3                   0
+##   American Dark Wheat Ale                        3                       1                   0
+##   American Pale Ale (APA)                      212                       4                   0
+##   American Pale Wheat Ale                        8                      63                   0
+##   American Strong Ale                            3                       1                   4
+##   American Wild Ale                              0                       0                   0
+##   Belgian Dark Ale                               1                       0                   0
+##   Belgian Pale Ale                               1                       1                   0
+##   Belgian Strong Dark Ale                        0                       0                   0
+##   Belgian Strong Pale Ale                        0                       0                   0
+##   Cream Ale                                      2                       4                   0
+##   English Brown Ale                              1                       0                   0
+##   English Dark Mild Ale                          0                       0                   0
+##   English Pale Ale                               3                       0                   0
+##   English Pale Mild Ale                          0                       0                   0
+##   English Strong Ale                             3                       0                   0
+##   Flanders Red Ale                               0                       0                   0
+##   Irish Red Ale                                  5                       2                   0
+##   Old Ale                                        1                       0                   0
+##   Pumpkin Ale                                    3                       1                   0
+##   Saison / Farmhouse Ale                         6                       0                   0
+##   Scotch Ale / Wee Heavy                         1                       2                   0
+##   Scottish Ale                                   0                       1                   0
+##   Wheat Ale                                      0                       0                   0
+##                           
+##                            American Wild Ale Belgian Dark Ale Belgian Pale Ale Belgian Strong Dark Ale
+##   Abbey Single Ale                         0                0                0                       0
+##   American Amber / Red Ale                 0                0                0                       3
+##   American Black Ale                       0                0                0                       1
+##   American Blonde Ale                      0                0                0                       0
+##   American Brown Ale                       0                0                0                       0
+##   American Dark Wheat Ale                  0                0                0                       0
+##   American Pale Ale (APA)                  0                0                0                       0
+##   American Pale Wheat Ale                  0                0                0                       0
+##   American Strong Ale                      0                0                0                       0
+##   American Wild Ale                        3                0                0                       0
+##   Belgian Dark Ale                         0                8                0                       0
+##   Belgian Pale Ale                         0                0               16                       0
+##   Belgian Strong Dark Ale                  0                0                0                       6
+##   Belgian Strong Pale Ale                  0                0                0                       0
+##   Cream Ale                                0                0                0                       0
+##   English Brown Ale                        0                0                0                       0
+##   English Dark Mild Ale                    0                0                0                       0
+##   English Pale Ale                         0                0                0                       0
+##   English Pale Mild Ale                    0                0                0                       0
+##   English Strong Ale                       0                0                0                       0
+##   Flanders Red Ale                         0                0                0                       0
+##   Irish Red Ale                            0                0                0                       0
+##   Old Ale                                  0                0                0                       0
+##   Pumpkin Ale                              0                0                0                       0
+##   Saison / Farmhouse Ale                   0                0                0                       0
+##   Scotch Ale / Wee Heavy                   0                0                0                       0
+##   Scottish Ale                             0                0                0                       0
+##   Wheat Ale                                0                0                0                       0
+##                           
+##                            Belgian Strong Pale Ale Cream Ale English Brown Ale English Dark Mild Ale
+##   Abbey Single Ale                               0         0                 0                     2
+##   American Amber / Red Ale                       0         3                 0                     0
+##   American Black Ale                             0         1                 0                     0
+##   American Blonde Ale                            0         0                 0                     1
+##   American Brown Ale                             0         1                 0                     0
+##   American Dark Wheat Ale                        0         0                 0                     0
+##   American Pale Ale (APA)                        0         2                 1                     0
+##   American Pale Wheat Ale                        0         0                 0                     1
+##   American Strong Ale                            0         0                 0                     0
+##   American Wild Ale                              0         1                 0                     0
+##   Belgian Dark Ale                               0         0                 0                     0
+##   Belgian Pale Ale                               0         1                 0                     0
+##   Belgian Strong Dark Ale                        0         0                 0                     0
+##   Belgian Strong Pale Ale                        7         0                 0                     0
+##   Cream Ale                                      0        11                 0                     0
+##   English Brown Ale                              0         2                 8                     0
+##   English Dark Mild Ale                          0         1                 0                     0
+##   English Pale Ale                               0         0                 0                     0
+##   English Pale Mild Ale                          0         0                 0                     0
+##   English Strong Ale                             0         0                 0                     0
+##   Flanders Red Ale                               0         0                 0                     0
+##   Irish Red Ale                                  0         0                 0                     1
+##   Old Ale                                        0         0                 0                     0
+##   Pumpkin Ale                                    0         0                 1                     0
+##   Saison / Farmhouse Ale                         0         2                 0                     0
+##   Scotch Ale / Wee Heavy                         0         0                 0                     0
+##   Scottish Ale                                   0         0                 0                     0
+##   Wheat Ale                                      0         0                 0                     0
+##                           
+##                            English Pale Ale English Pale Mild Ale English Strong Ale Flanders Red Ale
+##   Abbey Single Ale                        0                     0                  0                0
+##   American Amber / Red Ale                0                     0                  1                0
+##   American Black Ale                      0                     0                  0                0
+##   American Blonde Ale                     0                     2                  0                0
+##   American Brown Ale                      1                     1                  0                0
+##   American Dark Wheat Ale                 0                     0                  0                0
+##   American Pale Ale (APA)                 0                     0                  0                0
+##   American Pale Wheat Ale                 0                     0                  0                0
+##   American Strong Ale                     0                     0                  0                0
+##   American Wild Ale                       0                     0                  0                0
+##   Belgian Dark Ale                        0                     0                  0                0
+##   Belgian Pale Ale                        0                     0                  0                0
+##   Belgian Strong Dark Ale                 0                     0                  0                0
+##   Belgian Strong Pale Ale                 0                     0                  0                0
+##   Cream Ale                               0                     0                  0                0
+##   English Brown Ale                       0                     1                  0                0
+##   English Dark Mild Ale                   0                     0                  0                0
+##   English Pale Ale                        7                     0                  0                0
+##   English Pale Mild Ale                   0                     1                  0                0
+##   English Strong Ale                      0                     0                  0                0
+##   Flanders Red Ale                        0                     0                  0                0
+##   Irish Red Ale                           1                     0                  0                0
+##   Old Ale                                 0                     0                  0                0
+##   Pumpkin Ale                             0                     0                  0                0
+##   Saison / Farmhouse Ale                  0                     0                  0                0
+##   Scotch Ale / Wee Heavy                  0                     0                  0                0
+##   Scottish Ale                            0                     0                  0                0
+##   Wheat Ale                               0                     0                  0                0
+##                           
+##                            Irish Red Ale Old Ale Pumpkin Ale Saison / Farmhouse Ale
+##   Abbey Single Ale                     0       0           0                      0
+##   American Amber / Red Ale             2       1           0                      0
+##   American Black Ale                   0       0           0                      0
+##   American Blonde Ale                  1       0           1                      1
+##   American Brown Ale                   1       0           0                      2
+##   American Dark Wheat Ale              0       0           0                      0
+##   American Pale Ale (APA)              5       0           0                      4
+##   American Pale Wheat Ale              0       0           0                      0
+##   American Strong Ale                  0       1           0                      0
+##   American Wild Ale                    0       0           0                      0
+##   Belgian Dark Ale                     0       0           0                      0
+##   Belgian Pale Ale                     0       0           0                      0
+##   Belgian Strong Dark Ale              0       0           0                      0
+##   Belgian Strong Pale Ale              0       0           0                      0
+##   Cream Ale                            0       0           0                      1
+##   English Brown Ale                    0       0           0                      0
+##   English Dark Mild Ale                0       0           0                      0
+##   English Pale Ale                     1       0           0                      0
+##   English Pale Mild Ale                0       0           0                      0
+##   English Strong Ale                   0       0           0                      0
+##   Flanders Red Ale                     0       0           0                      0
+##   Irish Red Ale                        0       0           0                      0
+##   Old Ale                              0       0           0                      0
+##   Pumpkin Ale                          0       0          12                      0
+##   Saison / Farmhouse Ale               0       0           0                     32
+##   Scotch Ale / Wee Heavy               0       0           0                      1
+##   Scottish Ale                         1       0           0                      0
+##   Wheat Ale                            0       0           0                      0
+##                           
+##                            Scotch Ale / Wee Heavy Scottish Ale Wheat Ale
+##   Abbey Single Ale                              0            0         0
+##   American Amber / Red Ale                      0            1         0
+##   American Black Ale                            0            0         0
+##   American Blonde Ale                           0            1         0
+##   American Brown Ale                            0            1         0
+##   American Dark Wheat Ale                       0            0         0
+##   American Pale Ale (APA)                       0            0         0
+##   American Pale Wheat Ale                       2            0         0
+##   American Strong Ale                           0            0         0
+##   American Wild Ale                             0            0         0
+##   Belgian Dark Ale                              0            1         0
+##   Belgian Pale Ale                              0            0         0
+##   Belgian Strong Dark Ale                       0            0         0
+##   Belgian Strong Pale Ale                       0            0         0
+##   Cream Ale                                     0            0         0
+##   English Brown Ale                             0            0         0
+##   English Dark Mild Ale                         0            0         0
+##   English Pale Ale                              0            0         0
+##   English Pale Mild Ale                         0            0         0
+##   English Strong Ale                            0            0         0
+##   Flanders Red Ale                              0            0         0
+##   Irish Red Ale                                 0            1         0
+##   Old Ale                                       0            0         0
+##   Pumpkin Ale                                   1            0         0
+##   Saison / Farmhouse Ale                        0            0         0
+##   Scotch Ale / Wee Heavy                        6            2         0
+##   Scottish Ale                                  0           14         0
+##   Wheat Ale                                     0            0         0
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.6525          
+##                  95% CI : (0.6215, 0.6826)
+##     No Information Rate : 0.3071          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.5988          
+##                                           
+##  Mcnemar&#39;s Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: Abbey Single Ale Class: American Amber / Red Ale Class: American Black Ale
+## Sensitivity                         0.000000                         0.60305                   0.65789
+## Specificity                         0.997908                         0.93397                   0.98812
+## Pos Pred Value                      0.000000                         0.58955                   0.69444
+## Neg Pred Value                      0.991684                         0.93735                   0.98599
+## Prevalence                          0.008299                         0.13589                   0.03942
+## Detection Rate                      0.000000                         0.08195                   0.02593
+## Detection Prevalence                0.002075                         0.13900                   0.03734
+## Balanced Accuracy                   0.498954                         0.76851                   0.82301
+##                      Class: American Blonde Ale Class: American Brown Ale Class: American Dark Wheat Ale
+## Sensitivity                             0.54483                   0.72000                       0.000000
+## Specificity                             0.96459                   0.96280                       0.992716
+## Pos Pred Value                          0.73148                   0.51429                       0.000000
+## Neg Pred Value                          0.92290                   0.98434                       0.996865
+## Prevalence                              0.15041                   0.05187                       0.003112
+## Detection Rate                          0.08195                   0.03734                       0.000000
+## Detection Prevalence                    0.11203                   0.07261                       0.007261
+## Balanced Accuracy                       0.75471                   0.84140                       0.496358
+##                      Class: American Pale Ale (APA) Class: American Pale Wheat Ale
+## Sensitivity                                  0.7162                        0.69231
+## Specificity                                  0.9506                        0.96105
+## Pos Pred Value                               0.8653                        0.64948
+## Neg Pred Value                               0.8832                        0.96770
+## Prevalence                                   0.3071                        0.09440
+## Detection Rate                               0.2199                        0.06535
+## Detection Prevalence                         0.2541                        0.10062
+## Balanced Accuracy                            0.8334                        0.82668
+##                      Class: American Strong Ale Class: American Wild Ale Class: Belgian Dark Ale
+## Sensitivity                            0.666667                 1.000000                1.000000
+## Specificity                            0.989562                 0.996878                0.996862
+## Pos Pred Value                         0.285714                 0.500000                0.727273
+## Neg Pred Value                         0.997895                 1.000000                1.000000
+## Prevalence                             0.006224                 0.003112                0.008299
+## Detection Rate                         0.004149                 0.003112                0.008299
+## Detection Prevalence                   0.014523                 0.006224                0.011411
+## Balanced Accuracy                      0.828114                 0.998439                0.998431
+##                      Class: Belgian Pale Ale Class: Belgian Strong Dark Ale
+## Sensitivity                           1.0000                       0.600000
+## Specificity                           0.9916                       1.000000
+## Pos Pred Value                        0.6667                       1.000000
+## Neg Pred Value                        1.0000                       0.995825
+## Prevalence                            0.0166                       0.010373
+## Detection Rate                        0.0166                       0.006224
+## Detection Prevalence                  0.0249                       0.006224
+## Balanced Accuracy                     0.9958                       0.800000
+##                      Class: Belgian Strong Pale Ale Class: Cream Ale Class: English Brown Ale
+## Sensitivity                                1.000000          0.44000                 0.800000
+## Specificity                                1.000000          0.98083                 0.989518
+## Pos Pred Value                             1.000000          0.37931                 0.444444
+## Neg Pred Value                             1.000000          0.98503                 0.997886
+## Prevalence                                 0.007261          0.02593                 0.010373
+## Detection Rate                             0.007261          0.01141                 0.008299
+## Detection Prevalence                       0.007261          0.03008                 0.018672
+## Balanced Accuracy                          1.000000          0.71042                 0.894759
+##                      Class: English Dark Mild Ale Class: English Pale Ale Class: English Pale Mild Ale
+## Sensitivity                              0.000000                0.777778                     0.200000
+## Specificity                              0.993743                0.994764                     0.997914
+## Pos Pred Value                           0.000000                0.583333                     0.333333
+## Neg Pred Value                           0.994781                0.997899                     0.995838
+## Prevalence                               0.005187                0.009336                     0.005187
+## Detection Rate                           0.000000                0.007261                     0.001037
+## Detection Prevalence                     0.006224                0.012448                     0.003112
+## Balanced Accuracy                        0.496872                0.886271                     0.598957
+##                      Class: English Strong Ale Class: Flanders Red Ale Class: Irish Red Ale
+## Sensitivity                           0.000000                      NA              0.00000
+## Specificity                           0.995846                0.998963              0.98741
+## Pos Pred Value                        0.000000                      NA              0.00000
+## Neg Pred Value                        0.998958                      NA              0.98845
+## Prevalence                            0.001037                0.000000              0.01141
+## Detection Rate                        0.000000                0.000000              0.00000
+## Detection Prevalence                  0.004149                0.001037              0.01245
+## Balanced Accuracy                     0.497923                      NA              0.49370
+##                      Class: Old Ale Class: Pumpkin Ale Class: Saison / Farmhouse Ale
+## Sensitivity                0.000000            0.92308                       0.78049
+## Specificity                0.997921            0.98843                       0.97833
+## Pos Pred Value             0.000000            0.52174                       0.61538
+## Neg Pred Value             0.997921            0.99894                       0.99013
+## Prevalence                 0.002075            0.01349                       0.04253
+## Detection Rate             0.000000            0.01245                       0.03320
+## Detection Prevalence       0.002075            0.02386                       0.05394
+## Balanced Accuracy          0.498960            0.95576                       0.87941
+##                      Class: Scotch Ale / Wee Heavy Class: Scottish Ale Class: Wheat Ale
+## Sensitivity                               0.666667             0.66667               NA
+## Specificity                               0.990576             0.99470         0.998963
+## Pos Pred Value                            0.400000             0.73684               NA
+## Neg Pred Value                            0.996839             0.99259               NA
+## Prevalence                                0.009336             0.02178         0.000000
+## Detection Rate                            0.006224             0.01452         0.000000
+## Detection Prevalence                      0.015560             0.01971         0.001037
+## Balanced Accuracy                         0.828621             0.83068               NA</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##                           
+##                            Abbey Single Ale American Amber / Red Ale American Black Ale
+##   Abbey Single Ale                        0                        0                  0
+##   American Amber / Red Ale                0                       74                  4
+##   American Black Ale                      0                        1                 24
+##   American Blonde Ale                     0                        8                  0
+##   American Brown Ale                      0                        2                  0
+##   American Dark Wheat Ale                 0                        0                  0
+##   American Pale Ale (APA)                 0                        8                  2
+##   American Pale Wheat Ale                 0                        4                  0
+##   American Strong Ale                     0                        0                  8
+##   American Wild Ale                       0                        4                  0
+##   Belgian Dark Ale                        0                        1                  0
+##   Belgian Pale Ale                        0                        1                  0
+##   Belgian Strong Dark Ale                 0                        0                  0
+##   Belgian Strong Pale Ale                 0                        0                  0
+##   Cream Ale                               0                        5                  0
+##   English Brown Ale                       0                        0                  0
+##   English Dark Mild Ale                   0                        0                  0
+##   English Pale Ale                        0                        0                  0
+##   English Pale Mild Ale                   0                        0                  0
+##   English Strong Ale                      0                        0                  0
+##   Flanders Red Ale                        0                        0                  0
+##   Irish Red Ale                           0                        0                  0
+##   Old Ale                                 0                        0                  0
+##   Pumpkin Ale                             0                        2                  0
+##   Saison / Farmhouse Ale                  0                        7                  0
+##   Scotch Ale / Wee Heavy                  0                        6                  0
+##   Scottish Ale                            0                        0                  0
+##   Wheat Ale                               0                        1                  0
+##                           
+##                            American Blonde Ale American Brown Ale American Dark Wheat Ale
+##   Abbey Single Ale                           1                  0                       0
+##   American Amber / Red Ale                  19                  0                       0
+##   American Black Ale                         0                  0                       0
+##   American Blonde Ale                       78                  0                       0
+##   American Brown Ale                         9                 32                       0
+##   American Dark Wheat Ale                    1                  0                       0
+##   American Pale Ale (APA)                    2                  0                       0
+##   American Pale Wheat Ale                   18                  0                       0
+##   American Strong Ale                        1                  0                       0
+##   American Wild Ale                          1                  0                       0
+##   Belgian Dark Ale                           0                  2                       0
+##   Belgian Pale Ale                           3                  0                       0
+##   Belgian Strong Dark Ale                    0                  0                       0
+##   Belgian Strong Pale Ale                    0                  0                       0
+##   Cream Ale                                  2                  0                       0
+##   English Brown Ale                          5                  0                       0
+##   English Dark Mild Ale                      3                  1                       0
+##   English Pale Ale                           1                  0                       0
+##   English Pale Mild Ale                      3                  0                       0
+##   English Strong Ale                         0                  0                       0
+##   Flanders Red Ale                           0                  0                       0
+##   Irish Red Ale                              3                  0                       0
+##   Old Ale                                    0                  0                       0
+##   Pumpkin Ale                                5                  0                       0
+##   Saison / Farmhouse Ale                     5                  1                       0
+##   Scotch Ale / Wee Heavy                     2                  1                       0
+##   Scottish Ale                               3                  0                       0
+##   Wheat Ale                                  0                  0                       0
+##                           
+##                            American Pale Ale (APA) American Pale Wheat Ale American Strong Ale
+##   Abbey Single Ale                               0                       0                   0
+##   American Amber / Red Ale                      22                       1                   0
+##   American Black Ale                             6                       1                   1
+##   American Blonde Ale                            4                       9                   0
+##   American Brown Ale                            14                       2                   0
+##   American Dark Wheat Ale                        3                       3                   0
+##   American Pale Ale (APA)                      217                       1                   0
+##   American Pale Wheat Ale                       10                      61                   0
+##   American Strong Ale                            4                       0                   0
+##   American Wild Ale                              0                       0                   0
+##   Belgian Dark Ale                               1                       0                   0
+##   Belgian Pale Ale                               1                       1                   0
+##   Belgian Strong Dark Ale                        0                       0                   0
+##   Belgian Strong Pale Ale                        0                       0                   0
+##   Cream Ale                                      3                       4                   0
+##   English Brown Ale                              1                       0                   0
+##   English Dark Mild Ale                          0                       1                   0
+##   English Pale Ale                               4                       0                   0
+##   English Pale Mild Ale                          0                       0                   0
+##   English Strong Ale                             4                       0                   0
+##   Flanders Red Ale                               1                       0                   0
+##   Irish Red Ale                                  6                       2                   0
+##   Old Ale                                        2                       0                   0
+##   Pumpkin Ale                                    3                       1                   0
+##   Saison / Farmhouse Ale                         6                       0                   0
+##   Scotch Ale / Wee Heavy                         1                       1                   0
+##   Scottish Ale                                   0                       0                   0
+##   Wheat Ale                                      0                       0                   0
+##                           
+##                            American Wild Ale Belgian Dark Ale Belgian Pale Ale Belgian Strong Dark Ale
+##   Abbey Single Ale                         0                0                0                       0
+##   American Amber / Red Ale                 0                0                0                       3
+##   American Black Ale                       0                0                0                       3
+##   American Blonde Ale                      0                0                0                       0
+##   American Brown Ale                       0                0                0                       0
+##   American Dark Wheat Ale                  0                0                0                       0
+##   American Pale Ale (APA)                  0                0                0                       0
+##   American Pale Wheat Ale                  0                0                0                       0
+##   American Strong Ale                      0                0                0                       1
+##   American Wild Ale                        0                0                0                       0
+##   Belgian Dark Ale                         0                6                0                       0
+##   Belgian Pale Ale                         0                0               16                       0
+##   Belgian Strong Dark Ale                  0                0                0                       6
+##   Belgian Strong Pale Ale                  0                0                0                       0
+##   Cream Ale                                0                0                0                       0
+##   English Brown Ale                        0                0                0                       0
+##   English Dark Mild Ale                    0                0                0                       0
+##   English Pale Ale                         0                0                0                       0
+##   English Pale Mild Ale                    0                0                0                       0
+##   English Strong Ale                       0                0                0                       0
+##   Flanders Red Ale                         0                0                0                       0
+##   Irish Red Ale                            0                0                0                       0
+##   Old Ale                                  0                0                0                       0
+##   Pumpkin Ale                              0                0                0                       0
+##   Saison / Farmhouse Ale                   0                0                0                       0
+##   Scotch Ale / Wee Heavy                   0                0                0                       0
+##   Scottish Ale                             0                0                0                       0
+##   Wheat Ale                                0                0                0                       0
+##                           
+##                            Belgian Strong Pale Ale Cream Ale English Brown Ale English Dark Mild Ale
+##   Abbey Single Ale                               0         0                 0                     1
+##   American Amber / Red Ale                       0         3                 0                     0
+##   American Black Ale                             0         0                 0                     0
+##   American Blonde Ale                            0         0                 0                     1
+##   American Brown Ale                             0         2                 0                     1
+##   American Dark Wheat Ale                        0         0                 0                     0
+##   American Pale Ale (APA)                        0         1                 0                     0
+##   American Pale Wheat Ale                        0         0                 0                     1
+##   American Strong Ale                            0         0                 0                     0
+##   American Wild Ale                              0         0                 0                     0
+##   Belgian Dark Ale                               0         0                 0                     0
+##   Belgian Pale Ale                               0         0                 0                     0
+##   Belgian Strong Dark Ale                        0         0                 0                     0
+##   Belgian Strong Pale Ale                        7         0                 0                     0
+##   Cream Ale                                      0        11                 0                     2
+##   English Brown Ale                              0         1                 8                     1
+##   English Dark Mild Ale                          0         0                 0                     1
+##   English Pale Ale                               0         0                 0                     0
+##   English Pale Mild Ale                          0         0                 0                     0
+##   English Strong Ale                             0         0                 0                     0
+##   Flanders Red Ale                               0         0                 0                     0
+##   Irish Red Ale                                  0         0                 0                     0
+##   Old Ale                                        0         0                 0                     0
+##   Pumpkin Ale                                    0         0                 0                     0
+##   Saison / Farmhouse Ale                         0         1                 0                     0
+##   Scotch Ale / Wee Heavy                         0         0                 1                     0
+##   Scottish Ale                                   0         0                 2                     0
+##   Wheat Ale                                      0         0                 0                     0
+##                           
+##                            English Pale Ale English Pale Mild Ale English Strong Ale Flanders Red Ale
+##   Abbey Single Ale                        0                     0                  0                0
+##   American Amber / Red Ale                3                     0                  0                0
+##   American Black Ale                      0                     0                  0                0
+##   American Blonde Ale                     0                     3                  0                0
+##   American Brown Ale                      2                     0                  0                0
+##   American Dark Wheat Ale                 0                     0                  0                0
+##   American Pale Ale (APA)                 6                     0                  0                0
+##   American Pale Wheat Ale                 0                     1                  0                0
+##   American Strong Ale                     0                     0                  0                0
+##   American Wild Ale                       0                     0                  0                0
+##   Belgian Dark Ale                        0                     0                  0                0
+##   Belgian Pale Ale                        1                     0                  0                0
+##   Belgian Strong Dark Ale                 0                     0                  0                0
+##   Belgian Strong Pale Ale                 0                     0                  0                0
+##   Cream Ale                               0                     0                  0                0
+##   English Brown Ale                       0                     1                  0                0
+##   English Dark Mild Ale                   0                     0                  0                0
+##   English Pale Ale                        7                     0                  0                0
+##   English Pale Mild Ale                   0                     0                  0                0
+##   English Strong Ale                      0                     0                  0                0
+##   Flanders Red Ale                        0                     0                  0                0
+##   Irish Red Ale                           0                     0                  0                0
+##   Old Ale                                 0                     0                  0                0
+##   Pumpkin Ale                             0                     0                  0                0
+##   Saison / Farmhouse Ale                  0                     0                  0                0
+##   Scotch Ale / Wee Heavy                  0                     0                  0                0
+##   Scottish Ale                            0                     1                  0                0
+##   Wheat Ale                               0                     0                  0                0
+##                           
+##                            Irish Red Ale Old Ale Pumpkin Ale Saison / Farmhouse Ale
+##   Abbey Single Ale                     0       0           0                      0
+##   American Amber / Red Ale             1       0           0                      2
+##   American Black Ale                   0       0           0                      0
+##   American Blonde Ale                  3       0           0                      0
+##   American Brown Ale                   1       0           0                      1
+##   American Dark Wheat Ale              0       0           0                      0
+##   American Pale Ale (APA)              4       0           0                      3
+##   American Pale Wheat Ale              0       0           0                      0
+##   American Strong Ale                  0       0           0                      0
+##   American Wild Ale                    0       0           0                      0
+##   Belgian Dark Ale                     0       0           0                      0
+##   Belgian Pale Ale                     0       0           0                      0
+##   Belgian Strong Dark Ale              0       0           0                      0
+##   Belgian Strong Pale Ale              0       0           0                      0
+##   Cream Ale                            0       0           0                      2
+##   English Brown Ale                    0       0           0                      1
+##   English Dark Mild Ale                0       0           0                      0
+##   English Pale Ale                     0       0           0                      0
+##   English Pale Mild Ale                0       0           0                      0
+##   English Strong Ale                   0       0           0                      0
+##   Flanders Red Ale                     0       0           0                      0
+##   Irish Red Ale                        0       0           0                      0
+##   Old Ale                              0       0           0                      0
+##   Pumpkin Ale                          0       0          12                      0
+##   Saison / Farmhouse Ale               0       0           0                     31
+##   Scotch Ale / Wee Heavy               0       0           0                      1
+##   Scottish Ale                         0       0           0                      0
+##   Wheat Ale                            0       0           0                      0
+##                           
+##                            Scotch Ale / Wee Heavy Scottish Ale Wheat Ale
+##   Abbey Single Ale                              0            0         0
+##   American Amber / Red Ale                      0            2         0
+##   American Black Ale                            0            0         0
+##   American Blonde Ale                           2            0         0
+##   American Brown Ale                            0            4         0
+##   American Dark Wheat Ale                       0            0         0
+##   American Pale Ale (APA)                       0            1         0
+##   American Pale Wheat Ale                       0            2         0
+##   American Strong Ale                           0            0         0
+##   American Wild Ale                             1            0         0
+##   Belgian Dark Ale                              0            1         0
+##   Belgian Pale Ale                              1            0         0
+##   Belgian Strong Dark Ale                       0            0         0
+##   Belgian Strong Pale Ale                       0            0         0
+##   Cream Ale                                     0            0         0
+##   English Brown Ale                             0            0         0
+##   English Dark Mild Ale                         0            0         0
+##   English Pale Ale                              0            0         0
+##   English Pale Mild Ale                         0            0         0
+##   English Strong Ale                            0            0         0
+##   Flanders Red Ale                              0            0         0
+##   Irish Red Ale                                 0            1         0
+##   Old Ale                                       0            0         0
+##   Pumpkin Ale                                   0            0         0
+##   Saison / Farmhouse Ale                        0            1         0
+##   Scotch Ale / Wee Heavy                        1            1         0
+##   Scottish Ale                                  0           13         0
+##   Wheat Ale                                     0            0         0
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.6276          
+##                  95% CI : (0.5962, 0.6582)
+##     No Information Rate : 0.3247          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.5679          
+##                                           
+##  Mcnemar&#39;s Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: Abbey Single Ale Class: American Amber / Red Ale Class: American Black Ale
+## Sensitivity                               NA                         0.59677                   0.63158
+## Specificity                         0.997925                         0.92857                   0.98704
+## Pos Pred Value                            NA                         0.55224                   0.66667
+## Neg Pred Value                            NA                         0.93976                   0.98491
+## Prevalence                          0.000000                         0.12863                   0.03942
+## Detection Rate                      0.000000                         0.07676                   0.02490
+## Detection Prevalence                0.002075                         0.13900                   0.03734
+## Balanced Accuracy                         NA                         0.76267                   0.80931
+##                      Class: American Blonde Ale Class: American Brown Ale Class: American Dark Wheat Ale
+## Sensitivity                             0.47273                   0.86486                             NA
+## Specificity                             0.96245                   0.95901                       0.992739
+## Pos Pred Value                          0.72222                   0.45714                             NA
+## Neg Pred Value                          0.89836                   0.99441                             NA
+## Prevalence                              0.17116                   0.03838                       0.000000
+## Detection Rate                          0.08091                   0.03320                       0.000000
+## Detection Prevalence                    0.11203                   0.07261                       0.007261
+## Balanced Accuracy                       0.71759                   0.91194                             NA
+##                      Class: American Pale Ale (APA) Class: American Pale Wheat Ale
+## Sensitivity                                  0.6933                        0.69318
+## Specificity                                  0.9570                        0.95890
+## Pos Pred Value                               0.8857                        0.62887
+## Neg Pred Value                               0.8665                        0.96886
+## Prevalence                                   0.3247                        0.09129
+## Detection Rate                               0.2251                        0.06328
+## Detection Prevalence                         0.2541                        0.10062
+## Balanced Accuracy                            0.8251                        0.82604
+##                      Class: American Strong Ale Class: American Wild Ale Class: Belgian Dark Ale
+## Sensitivity                            0.000000                       NA                1.000000
+## Specificity                            0.985462                 0.993776                0.994781
+## Pos Pred Value                         0.000000                       NA                0.545455
+## Neg Pred Value                         0.998947                       NA                1.000000
+## Prevalence                             0.001037                 0.000000                0.006224
+## Detection Rate                         0.000000                 0.000000                0.006224
+## Detection Prevalence                   0.014523                 0.006224                0.011411
+## Balanced Accuracy                      0.492731                       NA                0.997390
+##                      Class: Belgian Pale Ale Class: Belgian Strong Dark Ale
+## Sensitivity                           1.0000                       0.461538
+## Specificity                           0.9916                       1.000000
+## Pos Pred Value                        0.6667                       1.000000
+## Neg Pred Value                        1.0000                       0.992693
+## Prevalence                            0.0166                       0.013485
+## Detection Rate                        0.0166                       0.006224
+## Detection Prevalence                  0.0249                       0.006224
+## Balanced Accuracy                     0.9958                       0.730769
+##                      Class: Belgian Strong Pale Ale Class: Cream Ale Class: English Brown Ale
+## Sensitivity                                1.000000          0.57895                 0.727273
+## Specificity                                1.000000          0.98095                 0.989507
+## Pos Pred Value                             1.000000          0.37931                 0.444444
+## Neg Pred Value                             1.000000          0.99144                 0.996829
+## Prevalence                                 0.007261          0.01971                 0.011411
+## Detection Rate                             0.007261          0.01141                 0.008299
+## Detection Prevalence                       0.007261          0.03008                 0.018672
+## Balanced Accuracy                          1.000000          0.77995                 0.858390
+##                      Class: English Dark Mild Ale Class: English Pale Ale Class: English Pale Mild Ale
+## Sensitivity                              0.125000                0.368421                     0.000000
+## Specificity                              0.994770                0.994709                     0.996868
+## Pos Pred Value                           0.166667                0.583333                     0.000000
+## Neg Pred Value                           0.992693                0.987395                     0.993757
+## Prevalence                               0.008299                0.019710                     0.006224
+## Detection Rate                           0.001037                0.007261                     0.000000
+## Detection Prevalence                     0.006224                0.012448                     0.003112
+## Balanced Accuracy                        0.559885                0.681565                     0.498434
+##                      Class: English Strong Ale Class: Flanders Red Ale Class: Irish Red Ale
+## Sensitivity                                 NA                      NA             0.000000
+## Specificity                           0.995851                0.998963             0.987435
+## Pos Pred Value                              NA                      NA             0.000000
+## Neg Pred Value                              NA                      NA             0.990546
+## Prevalence                            0.000000                0.000000             0.009336
+## Detection Rate                        0.000000                0.000000             0.000000
+## Detection Prevalence                  0.004149                0.001037             0.012448
+## Balanced Accuracy                           NA                      NA             0.493717
+##                      Class: Old Ale Class: Pumpkin Ale Class: Saison / Farmhouse Ale
+## Sensitivity                      NA            1.00000                       0.75610
+## Specificity                0.997925            0.98845                       0.97725
+## Pos Pred Value                   NA            0.52174                       0.59615
+## Neg Pred Value                   NA            1.00000                       0.98904
+## Prevalence                 0.000000            0.01245                       0.04253
+## Detection Rate             0.000000            0.01245                       0.03216
+## Detection Prevalence       0.002075            0.02386                       0.05394
+## Balanced Accuracy                NA            0.99422                       0.86667
+##                      Class: Scotch Ale / Wee Heavy Class: Scottish Ale Class: Wheat Ale
+## Sensitivity                               0.200000             0.50000               NA
+## Specificity                               0.985401             0.99360         0.998963
+## Pos Pred Value                            0.066667             0.68421               NA
+## Neg Pred Value                            0.995785             0.98624               NA
+## Prevalence                                0.005187             0.02697         0.000000
+## Detection Rate                            0.001037             0.01349         0.000000
+## Detection Prevalence                      0.015560             0.01971         0.001037
+## Balanced Accuracy                         0.592701             0.74680               NA</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##                           
+##                            Abbey Single Ale American Amber / Red Ale American Black Ale
+##   Abbey Single Ale                        0                        0                  0
+##   American Amber / Red Ale                0                       63                  7
+##   American Black Ale                      0                        0                 27
+##   American Blonde Ale                     0                        0                  0
+##   American Brown Ale                      0                        2                  0
+##   American Dark Wheat Ale                 0                        1                  0
+##   American Pale Ale (APA)                 0                       18                  2
+##   American Pale Wheat Ale                 0                        3                  0
+##   American Strong Ale                     0                        1                  9
+##   American Wild Ale                       0                        1                  0
+##   Belgian Dark Ale                        0                        2                  0
+##   Belgian Pale Ale                        0                        0                  0
+##   Belgian Strong Dark Ale                 0                        0                  6
+##   Belgian Strong Pale Ale                 0                        0                  0
+##   Cream Ale                               0                        0                  0
+##   English Brown Ale                       0                        1                  0
+##   English Dark Mild Ale                   0                        0                  0
+##   English Pale Ale                        0                        0                  0
+##   English Pale Mild Ale                   0                        0                  0
+##   English Strong Ale                      0                        0                  0
+##   Flanders Red Ale                        0                        0                  0
+##   Irish Red Ale                           0                        0                  0
+##   Old Ale                                 0                        0                  0
+##   Pumpkin Ale                             0                        2                  0
+##   Saison / Farmhouse Ale                  0                        5                  0
+##   Scotch Ale / Wee Heavy                  0                        3                  0
+##   Scottish Ale                            0                        6                  0
+##   Wheat Ale                               0                        1                  0
+##                           
+##                            American Blonde Ale American Brown Ale American Dark Wheat Ale
+##   Abbey Single Ale                           1                  0                       0
+##   American Amber / Red Ale                  18                  0                       0
+##   American Black Ale                         0                  0                       0
+##   American Blonde Ale                       81                  1                       0
+##   American Brown Ale                        14                 32                       0
+##   American Dark Wheat Ale                    3                  0                       0
+##   American Pale Ale (APA)                    4                  0                       0
+##   American Pale Wheat Ale                   16                  0                       0
+##   American Strong Ale                        0                  0                       0
+##   American Wild Ale                          0                  0                       0
+##   Belgian Dark Ale                           1                  8                       0
+##   Belgian Pale Ale                           3                  0                       0
+##   Belgian Strong Dark Ale                    0                  0                       0
+##   Belgian Strong Pale Ale                    4                  0                       0
+##   Cream Ale                                  9                  0                       0
+##   English Brown Ale                          7                  0                       0
+##   English Dark Mild Ale                      5                  0                       0
+##   English Pale Ale                           1                  0                       0
+##   English Pale Mild Ale                      3                  0                       0
+##   English Strong Ale                         0                  0                       0
+##   Flanders Red Ale                           0                  0                       0
+##   Irish Red Ale                              2                  0                       0
+##   Old Ale                                    0                  0                       0
+##   Pumpkin Ale                                4                  0                       0
+##   Saison / Farmhouse Ale                     7                  0                       0
+##   Scotch Ale / Wee Heavy                     1                  1                       0
+##   Scottish Ale                               2                  0                       0
+##   Wheat Ale                                  0                  0                       0
+##                           
+##                            American Pale Ale (APA) American Pale Wheat Ale American Strong Ale
+##   Abbey Single Ale                               0                       0                   0
+##   American Amber / Red Ale                      30                       2                   0
+##   American Black Ale                             7                       1                   0
+##   American Blonde Ale                            4                      12                   0
+##   American Brown Ale                            13                       2                   0
+##   American Dark Wheat Ale                        2                       1                   0
+##   American Pale Ale (APA)                      212                       0                   0
+##   American Pale Wheat Ale                        7                      64                   0
+##   American Strong Ale                            4                       0                   0
+##   American Wild Ale                              0                       0                   0
+##   Belgian Dark Ale                               0                       0                   0
+##   Belgian Pale Ale                               3                       1                   0
+##   Belgian Strong Dark Ale                        0                       0                   0
+##   Belgian Strong Pale Ale                        0                       0                   0
+##   Cream Ale                                      4                       7                   0
+##   English Brown Ale                              1                       0                   0
+##   English Dark Mild Ale                          0                       0                   0
+##   English Pale Ale                               8                       0                   0
+##   English Pale Mild Ale                          0                       0                   0
+##   English Strong Ale                             4                       0                   0
+##   Flanders Red Ale                               1                       0                   0
+##   Irish Red Ale                                  4                       0                   0
+##   Old Ale                                        2                       0                   0
+##   Pumpkin Ale                                    2                       2                   0
+##   Saison / Farmhouse Ale                         8                       0                   0
+##   Scotch Ale / Wee Heavy                         3                       3                   0
+##   Scottish Ale                                   0                       1                   0
+##   Wheat Ale                                      0                       0                   0
+##                           
+##                            American Wild Ale Belgian Dark Ale Belgian Pale Ale Belgian Strong Dark Ale
+##   Abbey Single Ale                         0                0                0                       0
+##   American Amber / Red Ale                 0                0                9                       0
+##   American Black Ale                       0                0                0                       1
+##   American Blonde Ale                      0                0                1                       0
+##   American Brown Ale                       0                0                1                       0
+##   American Dark Wheat Ale                  0                0                0                       0
+##   American Pale Ale (APA)                  0                0                0                       0
+##   American Pale Wheat Ale                  0                0                1                       0
+##   American Strong Ale                      0                0                0                       0
+##   American Wild Ale                        0                0                0                       0
+##   Belgian Dark Ale                         0                0                0                       0
+##   Belgian Pale Ale                         0                0               16                       0
+##   Belgian Strong Dark Ale                  0                0                0                       0
+##   Belgian Strong Pale Ale                  0                0                0                       0
+##   Cream Ale                                0                0                0                       0
+##   English Brown Ale                        0                0                4                       0
+##   English Dark Mild Ale                    0                0                0                       0
+##   English Pale Ale                         0                0                0                       0
+##   English Pale Mild Ale                    0                0                0                       0
+##   English Strong Ale                       0                0                0                       0
+##   Flanders Red Ale                         0                0                0                       0
+##   Irish Red Ale                            0                0                0                       0
+##   Old Ale                                  0                0                0                       0
+##   Pumpkin Ale                              0                0                0                       0
+##   Saison / Farmhouse Ale                   0                0                0                       0
+##   Scotch Ale / Wee Heavy                   0                0                1                       0
+##   Scottish Ale                             0                0                2                       0
+##   Wheat Ale                                0                0                0                       0
+##                           
+##                            Belgian Strong Pale Ale Cream Ale English Brown Ale English Dark Mild Ale
+##   Abbey Single Ale                               0         0                 0                     1
+##   American Amber / Red Ale                       0         0                 0                     0
+##   American Black Ale                             0         0                 0                     0
+##   American Blonde Ale                            0         0                 1                     3
+##   American Brown Ale                             0         0                 1                     1
+##   American Dark Wheat Ale                        0         0                 0                     0
+##   American Pale Ale (APA)                        0         0                 0                     0
+##   American Pale Wheat Ale                        0         0                 1                     1
+##   American Strong Ale                            0         0                 0                     0
+##   American Wild Ale                              0         0                 0                     0
+##   Belgian Dark Ale                               0         0                 0                     0
+##   Belgian Pale Ale                               0         0                 0                     0
+##   Belgian Strong Dark Ale                        0         0                 0                     0
+##   Belgian Strong Pale Ale                        3         0                 0                     0
+##   Cream Ale                                      0         8                 0                     0
+##   English Brown Ale                              0         0                 4                     1
+##   English Dark Mild Ale                          0         0                 0                     0
+##   English Pale Ale                               0         0                 0                     0
+##   English Pale Mild Ale                          0         0                 0                     0
+##   English Strong Ale                             0         0                 0                     0
+##   Flanders Red Ale                               0         0                 0                     0
+##   Irish Red Ale                                  0         0                 1                     1
+##   Old Ale                                        0         0                 0                     0
+##   Pumpkin Ale                                    0         0                 0                     0
+##   Saison / Farmhouse Ale                         0         0                 0                     0
+##   Scotch Ale / Wee Heavy                         0         0                 1                     0
+##   Scottish Ale                                   0         0                 0                     0
+##   Wheat Ale                                      0         0                 0                     0
+##                           
+##                            English Pale Ale English Pale Mild Ale English Strong Ale Flanders Red Ale
+##   Abbey Single Ale                        0                     0                  0                0
+##   American Amber / Red Ale                0                     0                  0                0
+##   American Black Ale                      0                     0                  0                0
+##   American Blonde Ale                     0                     0                  0                0
+##   American Brown Ale                      2                     0                  0                0
+##   American Dark Wheat Ale                 0                     0                  0                0
+##   American Pale Ale (APA)                 4                     0                  0                0
+##   American Pale Wheat Ale                 0                     0                  0                0
+##   American Strong Ale                     0                     0                  0                0
+##   American Wild Ale                       0                     0                  0                0
+##   Belgian Dark Ale                        0                     0                  0                0
+##   Belgian Pale Ale                        0                     0                  0                0
+##   Belgian Strong Dark Ale                 0                     0                  0                0
+##   Belgian Strong Pale Ale                 0                     0                  0                0
+##   Cream Ale                               0                     0                  0                0
+##   English Brown Ale                       0                     0                  0                0
+##   English Dark Mild Ale                   0                     0                  0                0
+##   English Pale Ale                        3                     0                  0                0
+##   English Pale Mild Ale                   0                     0                  0                0
+##   English Strong Ale                      0                     0                  0                0
+##   Flanders Red Ale                        0                     0                  0                0
+##   Irish Red Ale                           0                     0                  0                0
+##   Old Ale                                 0                     0                  0                0
+##   Pumpkin Ale                             0                     0                  0                0
+##   Saison / Farmhouse Ale                  0                     0                  0                0
+##   Scotch Ale / Wee Heavy                  0                     0                  0                0
+##   Scottish Ale                            0                     0                  0                0
+##   Wheat Ale                               0                     0                  0                0
+##                           
+##                            Irish Red Ale Old Ale Pumpkin Ale Saison / Farmhouse Ale
+##   Abbey Single Ale                     0       0           0                      0
+##   American Amber / Red Ale             0       0           0                      1
+##   American Black Ale                   0       0           0                      0
+##   American Blonde Ale                  0       0           0                      1
+##   American Brown Ale                   0       0           0                      1
+##   American Dark Wheat Ale              0       0           0                      0
+##   American Pale Ale (APA)              0       0           0                      5
+##   American Pale Wheat Ale              0       0           0                      3
+##   American Strong Ale                  0       0           0                      0
+##   American Wild Ale                    0       0           0                      1
+##   Belgian Dark Ale                     0       0           0                      0
+##   Belgian Pale Ale                     0       0           0                      1
+##   Belgian Strong Dark Ale              0       0           0                      0
+##   Belgian Strong Pale Ale              0       0           0                      0
+##   Cream Ale                            0       0           0                      1
+##   English Brown Ale                    0       0           0                      0
+##   English Dark Mild Ale                0       0           0                      0
+##   English Pale Ale                     0       0           0                      0
+##   English Pale Mild Ale                0       0           0                      0
+##   English Strong Ale                   0       0           0                      0
+##   Flanders Red Ale                     0       0           0                      0
+##   Irish Red Ale                        0       0           0                      4
+##   Old Ale                              0       0           0                      0
+##   Pumpkin Ale                          0       0          12                      1
+##   Saison / Farmhouse Ale               0       0           0                     32
+##   Scotch Ale / Wee Heavy               0       0           0                      2
+##   Scottish Ale                         0       0           0                      0
+##   Wheat Ale                            0       0           0                      0
+##                           
+##                            Scotch Ale / Wee Heavy Scottish Ale Wheat Ale
+##   Abbey Single Ale                              0            0         0
+##   American Amber / Red Ale                      0            4         0
+##   American Black Ale                            0            0         0
+##   American Blonde Ale                           0            4         0
+##   American Brown Ale                            0            1         0
+##   American Dark Wheat Ale                       0            0         0
+##   American Pale Ale (APA)                       0            0         0
+##   American Pale Wheat Ale                       0            1         0
+##   American Strong Ale                           0            0         0
+##   American Wild Ale                             0            4         0
+##   Belgian Dark Ale                              0            0         0
+##   Belgian Pale Ale                              0            0         0
+##   Belgian Strong Dark Ale                       0            0         0
+##   Belgian Strong Pale Ale                       0            0         0
+##   Cream Ale                                     0            0         0
+##   English Brown Ale                             0            0         0
+##   English Dark Mild Ale                         0            1         0
+##   English Pale Ale                              0            0         0
+##   English Pale Mild Ale                         0            0         0
+##   English Strong Ale                            0            0         0
+##   Flanders Red Ale                              0            0         0
+##   Irish Red Ale                                 0            0         0
+##   Old Ale                                       0            0         0
+##   Pumpkin Ale                                   0            0         0
+##   Saison / Farmhouse Ale                        0            0         0
+##   Scotch Ale / Wee Heavy                        0            0         0
+##   Scottish Ale                                  0            8         0
+##   Wheat Ale                                     0            0         0
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.5861          
+##                  95% CI : (0.5543, 0.6174)
+##     No Information Rate : 0.3309          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.5177          
+##                                           
+##  Mcnemar&#39;s Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: Abbey Single Ale Class: American Amber / Red Ale Class: American Black Ale
+## Sensitivity                               NA                         0.57798                   0.52941
+## Specificity                         0.997925                         0.91696                   0.99014
+## Pos Pred Value                            NA                         0.47015                   0.75000
+## Neg Pred Value                            NA                         0.94458                   0.97414
+## Prevalence                          0.000000                         0.11307                   0.05290
+## Detection Rate                      0.000000                         0.06535                   0.02801
+## Detection Prevalence                0.002075                         0.13900                   0.03734
+## Balanced Accuracy                         NA                         0.74747                   0.75978
+##                      Class: American Blonde Ale Class: American Brown Ale Class: American Dark Wheat Ale
+## Sensitivity                             0.43548                   0.76190                             NA
+## Specificity                             0.96530                   0.95879                       0.992739
+## Pos Pred Value                          0.75000                   0.45714                             NA
+## Neg Pred Value                          0.87734                   0.98881                             NA
+## Prevalence                              0.19295                   0.04357                       0.000000
+## Detection Rate                          0.08402                   0.03320                       0.000000
+## Detection Prevalence                    0.11203                   0.07261                       0.007261
+## Balanced Accuracy                       0.70039                   0.86035                             NA
+##                      Class: American Pale Ale (APA) Class: American Pale Wheat Ale
+## Sensitivity                                  0.6646                        0.66667
+## Specificity                                  0.9488                        0.96198
+## Pos Pred Value                               0.8653                        0.65979
+## Neg Pred Value                               0.8512                        0.96309
+## Prevalence                                   0.3309                        0.09959
+## Detection Rate                               0.2199                        0.06639
+## Detection Prevalence                         0.2541                        0.10062
+## Balanced Accuracy                            0.8067                        0.81432
+##                      Class: American Strong Ale Class: American Wild Ale Class: Belgian Dark Ale
+## Sensitivity                                  NA                       NA                      NA
+## Specificity                             0.98548                 0.993776                 0.98859
+## Pos Pred Value                               NA                       NA                      NA
+## Neg Pred Value                               NA                       NA                      NA
+## Prevalence                              0.00000                 0.000000                 0.00000
+## Detection Rate                          0.00000                 0.000000                 0.00000
+## Detection Prevalence                    0.01452                 0.006224                 0.01141
+## Balanced Accuracy                            NA                       NA                      NA
+##                      Class: Belgian Pale Ale Class: Belgian Strong Dark Ale
+## Sensitivity                          0.45714                       0.000000
+## Specificity                          0.99139                       0.993769
+## Pos Pred Value                       0.66667                       0.000000
+## Neg Pred Value                       0.97979                       0.998956
+## Prevalence                           0.03631                       0.001037
+## Detection Rate                       0.01660                       0.000000
+## Detection Prevalence                 0.02490                       0.006224
+## Balanced Accuracy                    0.72427                       0.496885
+##                      Class: Belgian Strong Pale Ale Class: Cream Ale Class: English Brown Ale
+## Sensitivity                                1.000000         1.000000                 0.444444
+## Specificity                                0.995838         0.978033                 0.985340
+## Pos Pred Value                             0.428571         0.275862                 0.222222
+## Neg Pred Value                             1.000000         1.000000                 0.994715
+## Prevalence                                 0.003112         0.008299                 0.009336
+## Detection Rate                             0.003112         0.008299                 0.004149
+## Detection Prevalence                       0.007261         0.030083                 0.018672
+## Balanced Accuracy                          0.997919         0.989017                 0.714892
+##                      Class: English Dark Mild Ale Class: English Pale Ale Class: English Pale Mild Ale
+## Sensitivity                              0.000000                0.333333                           NA
+## Specificity                              0.993724                0.990576                     0.996888
+## Pos Pred Value                           0.000000                0.250000                           NA
+## Neg Pred Value                           0.991649                0.993697                           NA
+## Prevalence                               0.008299                0.009336                     0.000000
+## Detection Rate                           0.000000                0.003112                     0.000000
+## Detection Prevalence                     0.006224                0.012448                     0.003112
+## Balanced Accuracy                        0.496862                0.661955                           NA
+##                      Class: English Strong Ale Class: Flanders Red Ale Class: Irish Red Ale
+## Sensitivity                                 NA                      NA                   NA
+## Specificity                           0.995851                0.998963              0.98755
+## Pos Pred Value                              NA                      NA                   NA
+## Neg Pred Value                              NA                      NA                   NA
+## Prevalence                            0.000000                0.000000              0.00000
+## Detection Rate                        0.000000                0.000000              0.00000
+## Detection Prevalence                  0.004149                0.001037              0.01245
+## Balanced Accuracy                           NA                      NA                   NA
+##                      Class: Old Ale Class: Pumpkin Ale Class: Saison / Farmhouse Ale
+## Sensitivity                      NA            1.00000                       0.60377
+## Specificity                0.997925            0.98845                       0.97805
+## Pos Pred Value                   NA            0.52174                       0.61538
+## Neg Pred Value                   NA            1.00000                       0.97697
+## Prevalence                 0.000000            0.01245                       0.05498
+## Detection Rate             0.000000            0.01245                       0.03320
+## Detection Prevalence       0.002075            0.02386                       0.05394
+## Balanced Accuracy                NA            0.99422                       0.79091
+##                      Class: Scotch Ale / Wee Heavy Class: Scottish Ale Class: Wheat Ale
+## Sensitivity                                     NA            0.347826               NA
+## Specificity                                0.98444            0.988310         0.998963
+## Pos Pred Value                                  NA            0.421053               NA
+## Neg Pred Value                                  NA            0.984127               NA
+## Prevalence                                 0.00000            0.023859         0.000000
+## Detection Rate                             0.00000            0.008299         0.000000
+## Detection Prevalence                       0.01556            0.019710         0.001037
+## Balanced Accuracy                               NA            0.668068               NA</code></pre>
+<pre><code>##                       Style   n
+## 1          Abbey Single Ale   2
+## 2  American Amber / Red Ale 134
+## 3        American Black Ale  36
+## 4       American Blonde Ale 108
+## 5        American Brown Ale  70
+## 6   American Dark Wheat Ale   7
+## 7   American Pale Ale (APA) 245
+## 8   American Pale Wheat Ale  97
+## 9       American Strong Ale  14
+## 10        American Wild Ale   6
+## 11         Belgian Dark Ale  11
+## 12         Belgian Pale Ale  24
+## 13  Belgian Strong Dark Ale   6
+## 14  Belgian Strong Pale Ale   7
+## 15                Cream Ale  29
+## 16        English Brown Ale  18
+## 17    English Dark Mild Ale   6
+## 18         English Pale Ale  12
+## 19    English Pale Mild Ale   3
+## 20       English Strong Ale   4
+## 21         Flanders Red Ale   1
+## 22            Irish Red Ale  12
+## 23                  Old Ale   2
+## 24              Pumpkin Ale  23
+## 25   Saison / Farmhouse Ale  52
+## 26   Scotch Ale / Wee Heavy  15
+## 27             Scottish Ale  19
+## 28                Wheat Ale   1</code></pre>
+<pre><code>##                            Style   n
+## 1 American Double / Imperial IPA 105
+## 2                   American IPA 424
+## 3             American White IPA  11
+## 4                    Belgian IPA  18
+## 5   English India Pale Ale (IPA)  13</code></pre>
+<pre><code>## [1] 0.8980609</code></pre>
+<p><img src="Project1_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p><img src="Project1_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p><img src="Project1_files/figure-html/unnamed-chunk-31-1.png" width="672" /> # Ale Style Beers</p>
+<p><img src="Project1_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p><img src="Project1_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p><img src="Project1_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<pre><code>## Warning: package &#39;dbscan&#39; was built under R version 4.1.1</code></pre>
+<pre><code>## Warning: package &#39;RcmdrMisc&#39; was built under R version 4.1.1</code></pre>
+<pre><code>## Loading required package: car</code></pre>
+<pre><code>## Warning: package &#39;car&#39; was built under R version 4.1.1</code></pre>
+<pre><code>## Loading required package: carData</code></pre>
+<pre><code>## Warning: package &#39;carData&#39; was built under R version 4.1.1</code></pre>
+<pre><code>## 
+## Attaching package: &#39;car&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     some</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     recode</code></pre>
+<pre><code>## Loading required package: sandwich</code></pre>
+<pre><code>## Warning: package &#39;sandwich&#39; was built under R version 4.1.1</code></pre>
+</div>
+<div id="kmeans-plotting-section" class="section level1">
+<h1>KMeans Plotting Section</h1>
+<p><img src="Project1_files/figure-html/unnamed-chunk-37-1.png" width="960" /></p>
+<p><img src="Project1_files/figure-html/unnamed-chunk-38-1.png" width="960" /></p>
+<p><img src="Project1_files/figure-html/unnamed-chunk-39-1.png" width="960" /></p>
+<p><img src="Project1_files/figure-html/unnamed-chunk-40-1.png" width="960" /></p>
+<p><img src="Project1_files/figure-html/unnamed-chunk-41-1.png" width="960" /></p>
+<p><img src="Project1_files/figure-html/unnamed-chunk-42-1.png" width="960" /></p>
+</div>
+<div id="dbscan-plotting-section" class="section level1">
+<h1>DBSCAN Plotting Section</h1>
+<p><img src="Project1_files/figure-html/unnamed-chunk-43-1.png" width="960" /> <img src="Project1_files/figure-html/unnamed-chunk-44-1.png" width="960" /></p>
+<p><img src="Project1_files/figure-html/unnamed-chunk-45-1.png" width="960" /></p>
+<p><img src="Project1_files/figure-html/unnamed-chunk-46-1.png" width="960" /></p>
+<p><img src="Project1_files/figure-html/unnamed-chunk-47-1.png" width="960" /></p>
+<div id="question-9-knock-their-socks-off-find-one-other-useful-inference-from-the" class="section level2">
+<h2>Question 9: Knock their socks off! Find one other useful inference from the</h2>
+</div>
+<div id="data-that-you-feel-budweiser-may-be-able-to-find-value-in." class="section level2">
+<h2>data that you feel Budweiser may be able to find value in.</h2>
+</div>
+<div id="you-must-convince-them-why-it-is-important-and-back-up-your" class="section level2">
+<h2>You must convince them why it is important and back up your</h2>
+</div>
+<div id="conviction-with-appropriate-statistical-evidence." class="section level2">
+<h2>conviction with appropriate statistical evidence.</h2>
+<pre><code>## # A tibble: 6 x 2
+##   State count
+##   &lt;chr&gt; &lt;int&gt;
+## 1 &quot; DC&quot;     1
+## 2 &quot; ND&quot;     1
+## 3 &quot; SD&quot;     1
+## 4 &quot; WV&quot;     1
+## 5 &quot; AR&quot;     2
+## 6 &quot; DE&quot;     2</code></pre>
+<pre><code>## # A tibble: 8 x 2
+##   State count
+##   &lt;chr&gt; &lt;int&gt;
+## 1 &quot; DC&quot;     1
+## 2 &quot; ND&quot;     1
+## 3 &quot; SD&quot;     1
+## 4 &quot; WV&quot;     1
+## 5 &quot; AR&quot;     2
+## 6 &quot; DE&quot;     2
+## 7 &quot; MS&quot;     2
+## 8 &quot; NV&quot;     2</code></pre>
+<pre><code>## # A tibble: 19 x 2
+##    State count
+##    &lt;chr&gt; &lt;int&gt;
+##  1 &quot; DC&quot;     1
+##  2 &quot; ND&quot;     1
+##  3 &quot; SD&quot;     1
+##  4 &quot; WV&quot;     1
+##  5 &quot; AR&quot;     2
+##  6 &quot; DE&quot;     2
+##  7 &quot; MS&quot;     2
+##  8 &quot; NV&quot;     2
+##  9 &quot; AL&quot;     3
+## 10 &quot; KS&quot;     3
+## 11 &quot; NH&quot;     3
+## 12 &quot; NJ&quot;     3
+## 13 &quot; TN&quot;     3
+## 14 &quot; HI&quot;     4
+## 15 &quot; KY&quot;     4
+## 16 &quot; NM&quot;     4
+## 17 &quot; SC&quot;     4
+## 18 &quot; UT&quot;     4
+## 19 &quot; WY&quot;     4</code></pre>
+<pre><code>## # A tibble: 551 x 2
+##    Name                      count
+##    &lt;chr&gt;                     &lt;int&gt;
+##  1 Blackrocks Brewery            2
+##  2 Blue Mountain Brewery         2
+##  3 Lucette Brewing Company       2
+##  4 Oskar Blues Brewery           2
+##  5 Otter Creek Brewing           2
+##  6 Sly Fox Brewing Company       2
+##  7 Summit Brewing Company        2
+##  8 10 Barrel Brewing Company     1
+##  9 18th Street Brewery           1
+## 10 2 Towns Ciderhouse            1
+## # ... with 541 more rows</code></pre>
+<pre><code>## # A tibble: 6 x 2
+##   State count
+##   &lt;chr&gt; &lt;int&gt;
+## 1 &quot; CO&quot;    47
+## 2 &quot; CA&quot;    39
+## 3 &quot; MI&quot;    32
+## 4 &quot; OR&quot;    29
+## 5 &quot; TX&quot;    28
+## 6 &quot; PA&quot;    25</code></pre>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
