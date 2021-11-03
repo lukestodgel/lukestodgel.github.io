@@ -1,0 +1,549 @@
+,name,lat,long
+1,NorthGate Brewing,37.7630772,-122.401106
+2,Against the Grain Brewery,38.2555674,-85.74426752
+3,Fort Point Beer Company,40.58916845,-105.0584895
+4,COAST Brewing Company,32.8736085,-79.9720431
+5,Great Divide Brewing Company,39.7701965,-104.9798778
+6,Tapistry Brewing,41.9427559,-86.5561575
+7,Big Lake Brewing,42.79149405,-86.10791587
+8,Brewery Vivant,42.95988805,-85.64596177
+9,Blackrocks Brewery,46.5470083,-87.3944001
+10,Witch's Hat Brewing Company,42.4545914,-83.65035634
+11,Founders Brewing Company,42.9582711,-85.67453812
+12,Flat 12 Bierwerks,38.2693327,-85.7395861
+13,Black Acre Brewing Co.,39.7709841,-86.07120484
+14,Indiana City Brewing,39.7661102,-86.141258
+15,Burn 'Em Brewing,41.73852735,-86.82802105
+16,Evil Czech Brewery,41.6939205,-86.1823337
+17,Cedar Creek Brewery,45.688273,-111.020948
+18,Boulevard Brewing Company,39.08196355,-94.59682307
+19,The Dudes' Brewing Company,34.4168201,-118.5598078
+20,Anchor Brewing Company,37.7630772,-122.401106
+21,Figueroa Mountain Brewing Company,34.4146238,-119.6907845
+22,Avery Brewing Company,40.0625835,-105.2047652
+23,Twisted X Brewing Company,30.16509255,-98.0847353
+24,Lost Nation Brewing,44.5699888,-72.60300895
+25,Tallgrass Brewing Company,39.1428736,-96.6792762
+26,Firestone Walker Brewing Company,35.5958792,-120.69408
+27,SweetWater Brewing Company,33.80802235,-84.38107219
+28,Upslope Brewing Company,40.0629454,-105.2792068
+29,Bent Brewstillery,45.0245441,-93.1738299
+30,Pollyanna Brewing Company,41.6759774,-87.9978837
+31,BuckleDown Brewing,41.8059343,-87.8371483
+32,Destihl Brewery,40.529032,-88.94604188
+33,Summit Brewing Company,44.91398765,-93.13959808
+34,Against The Grain Brewery,38.2555674,-85.74426752
+35,Crazy Mountain Brewing Company,39.7050448,-104.9390285
+36,Freetail Brewing Company,29.6017424,-98.5612324
+37,3 Daughters Brewing,27.76904775,-82.66259828
+38,Appalachian Mountain Brewery,36.2033728,-81.6684259
+39,Birdsong Brewing Company,35.23064025,-80.82653099
+40,Union Craft Brewing,39.3365985,-76.6447849
+41,Atwater Brewery,42.3372918,-83.0184893
+42,Ale Asylum,43.12046815,-89.35416285
+43,Bell's Brewery,42.28749879,-85.4562588
+44,Blue Owl Brewing,30.2545924,-97.7170085
+45,Hopworks Urban Brewery,45.4968753,-122.634827
+46,Epic Brewing,39.7631779,-104.9813821
+47,New Belgium Brewing Company,35.5879302,-82.57194293
+48,Sierra Nevada Brewing Company,39.7225867,-121.816198
+49,Brewery Terra Firma,44.71509875,-85.63510581
+50,Kirkwood Station Brewing Company,38.58251855,-90.40580812
+51,Goose Island Brewing Company,43.2310914,-73.4569975
+52,The Lion Brewery,41.25534437,-75.85746813
+53,Rhinegeist Brewery,39.11715435,-84.51990808
+54,Warped Wing Brewing Company,39.7596025,-84.18590039
+55,Catawba Valley Brewing Company,35.58905465,-82.5535967
+56,Mission Brewery,32.707093,-117.1515633
+57,West Sixth Brewing,39.0529163,-82.6384147
+58,King Street Brewing Company,61.139191,-149.88026
+59,Beer Works Brewery,41.8092406,-71.4258944
+60,Renegade Brewing Company,39.7306283,-104.9993888
+61,Black Market Brewing Company,35.619217,-82.31794593
+62,Vault Brewing Company,40.2423373,-74.83849869
+63,Alameda Brewing,37.7147788,-122.1792023
+64,Steamworks Brewing Company,37.2722919,-107.879857
+65,Ipswich Ale Brewery,42.68094065,-70.84151798
+66,Griffin Claw Brewing Company,42.5434572,-83.19546429
+67,Karbach Brewing Company,29.8063812,-95.4605283
+68,Deep Ellum Brewing Company,32.7807294,-96.7813877
+69,Real Ale Brewing Company,30.113319,-98.4128525
+70,Straub Brewery,41.4276409,-78.55299225
+71,Stevens Point Brewery,44.5104786,-89.57365746
+72,Weston Brewing Company,39.41135471,-94.89937102
+73,Pug Ryan's Brewery,39.6279944,-106.0461281
+74,Third Street Brewhouse,45.4589451,-94.4294098
+75,Grimm Brothers Brewhouse,40.3967472,-105.0469069
+76,Cisco Brewers,43.08832335,-70.80324416
+77,Angry Minnow,46.0104853,-91.4887672
+78,Oakshire Brewing,44.0730134,-123.1406702
+79,Fort Pitt Brewing Company,40.4957709,-79.924826
+80,Three Creeks Brewing,44.29689635,-121.5479426
+81,Phoenix Ale Brewery,33.5840567,-111.9795009
+82,Lumberyard Brewing Company,35.1964377,-111.648578
+83,Uinta Brewing Company,40.7890893,-111.9872264
+84,Four Peaks Brewing Company,33.4196675,-111.9157036
+85,Martin House Brewing Company,37.7630772,-122.401106
+86,Right Brain Brewery,44.7495064,-85.6195125
+87,Sly Fox Brewing Company,40.2654506,-75.6685151
+88,Great Crescent Brewery,39.0723428,-84.83406606
+89,Oskar Blues Brewery,40.139192,-105.122885
+90,High Hops Brewery,40.4801558,-104.9358706
+91,Everybody's Brewing,45.7272997,-121.485299
+92,Anderson Valley Brewing Company,39.00085845,-123.3567502
+93,Fiddlehead Brewing Company,44.3662205,-73.2325595
+94,Evil Twin Brewing,40.7029844,-73.9905451
+95,18th Street Brewery,38.61701785,-90.21093092
+96,Cambridge Brewing Company,42.3664143,-71.0913087
+97,Carolina Brewery,35.98390656,-80.85100052
+98,Wild Wolf Brewing Company,37.8884696,-78.8803834
+99,COOP Ale Works,35.4185472,-97.65776203
+100,St. Julian Winery,41.95951945,-83.6782668
+101,Mother's Brewing,37.20791735,-93.29928282
+102,Two Beers Brewing Company,47.5605648,-122.3377084
+103,Capital Brewery,43.09478,-89.51631612
+104,Anthem Brewing Company,35.46066305,-97.5283174
+105,Breakside Brewery,45.57158765,-122.6568385
+106,Goose Island Brewery Company,43.2310914,-73.4569975
+107,Burnside Brewing Co.,45.52352048,-122.6581479
+108,Hop Valley Brewing Company,44.0828582,-123.0397437
+109,Occidental Brewing Company,39.0752226,-78.5975618
+110,People's Brewing Company,40.43764445,-86.88674616
+111,Fort George Brewery,46.1884134,-123.8274641
+112,Kalona Brewing Company,41.4833131,-91.7075553
+113,Modern Times Beer,32.7541859,-117.2062181
+114,Temperance Beer Company,42.0400322,-87.7020644
+115,Wisconsin Brewing Company,42.96885545,-89.50898823
+116,Crow Peak Brewing Company,44.51749305,-103.8702901
+117,Orpheus Brewing,33.7935517,-84.3687353
+118,Bozeman Brewing Company,45.6845234,-111.0238884
+119,Fat Head's Brewery,40.2420767,-75.3347592
+120,Refuge Brewery,33.50431328,-117.158374
+121,Chatham Brewing,42.3632971,-73.5952896
+122,College Street Brewhouse and Pub,33.7652432,-84.3488434
+123,Harpoon Brewery,42.3472714,-71.0339692
+124,Back East Brewing Company,41.8550153,-72.7047612
+125,Champion Brewing Company,37.542417,-77.4391228
+126,Golden Road Brewing,34.1506216,-118.2744662
+127,New Republic Brewing Company,48.6482349,-118.7379008
+128,Lift Bridge Brewing Company,43.0466926,-87.9136479
+129,Creature Comforts,34.50817905,-83.39796966
+130,Half Full Brewery,41.0394126,-73.5499379
+131,Chapman's Brewing,40.8818084,-85.4962042
+132,Barrio Brewing Company,42.6540692,-73.7477348
+133,Santa Cruz Mountain Brewing,36.9591842,-122.0481763
+134,Frankenmuth Brewery,43.3311302,-83.73767102
+135,South Austin Brewery,30.2143335,-97.762481
+136,Bauhaus Brew Labs,45.0007943,-93.2447193
+137,Ozark Beer Company,36.3335034,-94.1147203
+138,Mountain Town Brewing Company,29.8036158,-95.3870438
+139,Otter Creek Brewing,44.0294434,-73.1722257
+140,The Brewer's Art,39.3027444,-76.6162082
+141,Denver Beer Company,39.7582671,-105.0073217
+142,Tractor Brewing Company,35.2121779,-106.6969692
+143,Cape Cod Beer,41.67804315,-70.31009914
+144,Long Trail Brewing Company,37.7630772,-122.401106
+145,The Alchemist,44.47631378,-72.71542959
+146,Portside Brewery,41.50157504,-81.70317849
+147,Montauk Brewing Company,41.0366959,-71.9440878
+148,Berkshire Brewing Company,42.478702,-72.6093197
+149,Headlands Brewing Company,37.8936718,-122.110825
+150,Thunderhead Brewing Company,41.2531962,-95.930362
+151,Defiance Brewing Company,38.85874685,-99.30164671
+152,Milwaukee Brewing Company,43.0447868,-87.9221481
+153,Catawba Island Brewing,41.57772885,-82.83441947
+154,Back Forty Beer Company,33.521945,-86.78775053
+155,Four Corners Brewing Company,32.772092,-96.79180165
+156,Rogue Ales,37.8001497,-122.4107165
+157,Hale's Ales,40.0288791,-83.1190798
+158,Tommyknocker Brewery,39.2527479,-121.0257417
+159,Baxter Brewing Company,44.0951304,-70.2198659
+160,Northampton Brewery,42.317397,-72.6303406
+161,Wachusett Brewing Company,42.5587085,-71.8704551
+162,Hop Farm Brewing Company,40.4846784,-79.9480263
+163,Old Forge Brewing Company,40.96285115,-76.6168006
+164,Blue Hills Brewery,41.8550153,-72.7047612
+165,Night Shift Brewing,42.3673628,-71.0594069
+166,Beach Brewing Company,46.1881066,-123.8290241
+167,Brew Bus Brewing,27.98261965,-82.45864568
+168,Pine Street Brewery,44.4597784,-73.2138933
+169,Dirty Bucket Brewing Company,47.7661918,-122.1484843
+170,Jackalope Brewing Company,36.1503817,-86.7794989
+171,Iron Hill Brewery & Restaurant,40.0752709,-75.2054086
+172,Marshall Wharf Brewing Company,44.4289843,-69.0053583
+173,Dick's Brewing Company,46.7352063,-123.0013651
+174,Voodoo Brewery,41.6373576,-80.1547059
+175,Morgan Street Brewery,37.1303068,-121.6549204
+176,Half Acre Beer Company,41.9591945,-87.6820201
+177,The Bronx Brewery,40.801861,-73.91064054
+178,Catawba Brewing Company,35.58905465,-82.5535967
+179,David's Ale Works,38.69632765,-120.8288452
+180,Fargo Brewing Company,46.8768329,-96.7893333
+181,Big Sky Brewing Company,46.9224727,-114.0731652
+182,Nebraska Brewing Company,41.2579544,-95.9728744
+183,Wormtown Brewery,42.2634992,-71.7912262
+184,Due South Brewing Company,37.7630772,-122.401106
+185,Palisade Brewing Company,39.1110153,-108.3541064
+186,Hardywood Park Craft Brewery,37.5649586,-77.4575448
+187,Lavery Brewing Company,42.1230276,-80.0840093
+188,Fullsteam Brewery,36.00310675,-78.89959435
+189,Hinterland Brewery,44.50336585,-88.06456957
+190,Central Coast Brewing Company,32.8736085,-79.9720431
+191,Elevator Brewing Company,43.04550975,-87.92530432
+192,Aslan Brewing Company,48.74837375,-122.4745357
+193,Kulshan Brewery,48.7601273,-122.4645645
+194,Pikes Peak Brewing Company,38.83423935,-104.8249314
+195,Manayunk Brewing Company,40.0225615,-75.2189851
+196,Buckeye Brewing,47.6822302,-117.3433548
+197,NoDa Brewing Company,35.25155855,-80.81229235
+198,Mikkeller,32.89843384,-117.1445372
+199,Bohemian Brewery,40.6205445,-111.8882204
+200,Great River Brewery,41.52157415,-90.57002982
+201,21st Amendment Brewery,37.782448,-122.3925769
+202,Eddyline Brewery & Restaurant,38.8405627,-106.1326726
+203,Spring House Brewing Company,40.02994835,-76.30835158
+204,Astoria Brewing Company,46.1881066,-123.8290241
+205,Maui Brewing Company,20.7496505,-156.4379498
+206,Bold City Brewery,30.31979184,-81.69502057
+207,Blue Mountain Brewery,38.0160319,-78.8218849
+208,Starr Hill Brewery,38.0325265,-78.4950696
+209,Westbrook Brewing Company,43.67648235,-70.36957984
+210,Revolution Brewing,41.94229545,-87.70856239
+211,Natian Brewery,45.5227496,-122.6523921
+212,Breckenridge Brewery,39.4761392,-106.0437935
+213,Santa Fe Brewing Company,35.5965781,-106.0512414
+214,Miami Brewing Company,25.8001632,-80.20438084
+215,Schilling & Company,30.2585773,-92.00862228
+216,Hops & Grain Brewery,30.258312,-97.71187954
+217,Saugatuck Brewing Company,42.68573525,-86.16428357
+218,Moab Brewery,38.5626985,-109.5496464
+219,Macon Beer Company,32.83564475,-83.62932603
+220,Fate Brewing Company,33.39245955,-111.9366272
+221,10 Barrel Brewing Company,39.7594702,-104.9856401
+222,Tamarack Brewing Company,48.016086,-114.2254214
+223,New England Brewing Company,41.33942845,-72.97961767
+224,Straight to Ale,34.72094785,-86.60709413
+225,Austin Beerworks,30.3794297,-97.7297301
+226,Boulder Beer Company,40.026439,-105.2480158
+227,Sanitas Brewing Company,40.0214851,-105.2473789
+228,Gore Range Brewery,39.6442547,-106.5961905
+229,Wynkoop Brewing Company,39.7535446,-104.9984831
+230,Armadillo Ale Works,33.2128435,-97.12803229
+231,Asher Brewing Company,40.0601273,-105.2059026
+232,North Country Brewing Company,41.0636907,-80.0557639
+233,Seabright Brewery,33.1386811,-117.2738783
+234,French Broad Brewery,35.5663489,-82.53736742
+235,Two Roads Brewing Company,41.1857153,-73.1420327
+236,Brooklyn Brewery,40.7214424,-73.9573563
+237,The Right Brain Brewery,44.7495064,-85.6195125
+238,Kona Brewing Company,21.3324081,-157.9242928
+239,O'Fallon Brewery,38.7046842,-90.4477571
+240,Marble Brewery,35.0927723,-106.6465838
+241,Big Wood Brewery,45.0851173,-93.00674203
+242,Howard Brewing Company,44.51943545,-88.01785923
+243,Downeast Cider House,42.3641557,-71.0322106
+244,Northwest Brewing Company,48.56786694,-122.0295614
+245,Denali Brewing Company,62.16151055,-150.0292128
+246,Deschutes Brewery,44.04672635,-121.3220881
+247,Sunken City Brewing Company,37.1184978,-79.7227156
+248,Kenai River Brewing Company,60.4848837,-151.0570079
+249,River North Brewery,39.753515,-104.98341
+250,Fremont Brewing Company,47.64919175,-122.3444367
+251,Good Life Brewing Company,44.05096365,-121.3301425
+252,Engine 15 Brewing,43.04605955,-87.92468486
+253,Green Room Brewing,30.2907185,-81.3926384
+254,Okoboji Brewing Company,43.4059902,-95.1262322
+255,Engine House 9,47.25582313,-122.4728543
+256,Red Hare Brewing Company,33.92440825,-84.4957563
+257,Hangar 24 Craft Brewery,34.0831712,-117.141913
+258,Heavy Seas Beer,39.2320796,-76.6758041
+259,Confluence Brewing Company,41.5681836,-93.6324704
+260,The Manhattan Brewing Company,39.1795359,-96.5622144
+261,Redhook Brewery,43.08832335,-70.80324416
+262,Dock Street Brewery,39.94857998,-75.21794963
+263,Blue Point Brewing Company,40.75913445,-73.0216063
+264,Tampa Bay Brewing Company,27.9613506,-82.4416215
+265,Devil's Canyon Brewery,37.4988164,-122.2439229
+266,Newburyport Brewing Company,42.80453145,-70.88665225
+267,Cans Bar and Canteen,43.0598242,-87.8874602
+268,Wildwood Brewing Company,46.53009492,-114.1079758
+269,High Noon Saloon And Brewery,43.0950727,-89.3351861
+270,Sea Dog Brewing Company,43.63519195,-70.31903067
+272,Mudshark Brewing Company,34.4685811,-114.3409353
+273,Wingman Brewers,47.2410329,-122.4274671
+275,Sherwood Forest Brewers,39.03109355,-76.55203305
+276,Crabtree Brewing Company,40.3897102,-104.7274616
+277,Butcher's Brewing,36.0696646,-115.2993579
+278,New South Brewing Company,37.7630772,-122.401106
+279,Twisted Pine Brewing Company,40.0205129,-105.2511717
+280,Flying Dog Brewery,39.3628322,-77.42679107
+281,Aspen Brewing Company,39.1902646,-106.820341
+282,Triangle Brewing Company,34.0360857,-118.2358011
+283,Intuition Ale Works,30.32348665,-81.64484508
+284,Asheville Brewing Company,35.62213465,-82.55367345
+285,Dolores River Brewery,37.4735531,-108.5046859
+286,Abita Brewing Company,30.4821589,-90.05488557
+287,Mammoth Brewing Company,37.64877335,-118.9834999
+288,Grand Canyon Brewing Company,38.83423935,-104.8249314
+289,Lewis and Clark Brewing Company,46.5862933,-112.0417121
+290,Grand Canyon Brewing Company,35.26767149,-112.1943191
+291,Twin Lakes Brewing Company,36.9645435,-121.9892478
+292,Great Northern Brewing Company,48.4123381,-114.3369263
+293,Lancaster Brewing Company,40.0438123,-76.2983818
+294,Prescott Brewing Company,34.85932123,-111.1245871
+295,Wind River Brewing Company,42.86630765,-109.8659902
+297,Mickey Finn's Brewery,42.286249,-87.95462342
+298,Ukiah Brewing Company,39.1498742,-123.2078041
+299,Sleeping Lady Brewing Company,61.2197366,-149.8958196
+300,The Mitten Brewing Company,42.98491266,-85.68100276
+301,Tin Man Brewing Company,37.9802897,-87.58452457
+302,Four Fathers Brewing,41.47328343,-87.07906572
+303,Ballast Point Brewing Company,33.8347516,-117.911732
+304,Big Muddy Brewing,37.78182292,-89.33204055
+305,Revolution Brewing Company,40.05161529,-105.0477556
+306,White Birch Brewing,43.05712534,-71.44114457
+307,Surly Brewing Company,45.04294225,-93.32438943
+308,Mikerphone Brewing,42.02909208,-87.96704535
+309,Four String Brewing Company,39.98904657,-83.03279943
+310,Shebeen Brewing Company,41.575855,-73.000062
+311,Minhas Craft Brewery,42.59863051,-89.641509
+312,Round Guys Brewing,40.24337843,-75.28630882
+313,New Orleans Lager & Ale Brewing ...,29.9199522,-90.08141776
+314,Rahr & Sons Brewing Company,32.7371,-97.327292
+315,Frog Level Brewing Company,35.4929673,-82.99178072
+316,Oasis Texas Brewing Company,30.043267,-98.151206
+317,Worthy Brewing Company,44.0553542,-121.2603915
+318,Big Choice Brewing,39.98642943,-104.822433
+319,Newburgh Brewing Company,41.49659119,-74.00811699
+320,Two Henrys Brewing Company,28.0158875,-82.1366836
+321,Stillwater Artisanal Ales,39.28408355,-76.56726435
+322,Ska Brewing Company,61.219744,-149.893012
+323,Notch Brewing Company,42.51985753,-70.89054473
+324,Three Notch'd Brewing Company,38.0261159,-78.4820248
+325,Foolproof Brewing Company,41.86939069,-71.41017837
+326,Bolero Snort Brewery,40.86058569,-74.02983351
+327,Liquid Hero Brewery,39.95854203,-76.74375254
+328,Utah Brewers Cooperative,40.73267145,-111.8993199
+329,KelSo Beer Company,40.68267586,-73.96564
+330,Daredevil Brewing Company,39.844367,-86.64727
+331,Aviator Brewing Company,35.61695983,-78.8073896
+332,Blue Blood Brewing Company,40.77999602,-96.70701376
+333,Orlison Brewing Company,47.6403069,-117.5924443
+334,Bitter Root Brewing,46.24733778,-114.1551946
+335,Swamp Head Brewery,29.6142515,-82.3736302
+336,Peace Tree Brewing Company,41.31903523,-93.09970823
+337,Big Elm Brewing,42.093595,-73.351236
+338,Bale Breaker Brewing Company,46.57685541,-120.435573
+339,Cottrell Brewing,41.370676,-71.834289
+340,Northwoods Brewpub,44.58270666,-91.22665123
+341,Pyramid Breweries,47.5920086,-122.33477
+342,Moat Mountain Smoke House & Brew...,44.06850015,-71.14358535
+343,Covington Brewhouse,30.47766326,-90.0970557
+344,Jack's Abby Craft Lagers,42.28053688,-71.41115114
+345,Mike Hess Brewing Company,33.11733416,-117.1893856
+346,Petoskey Brewing,45.39705162,-84.90302424
+347,Perrin Brewing Company,43.07152532,-85.68147561
+348,Brew Link Brewing,39.68939196,-86.44435396
+349,Bare Hands Brewery,41.76043025,-86.1176553
+350,Three Pints Brewing,39.67820567,-86.37001324
+351,Sun King Brewing Company,39.7692384,-86.14456962
+352,450 North Brewing Company,39.26815462,-85.83274309
+353,Taxman Brewing Company,39.52114838,-86.16709259
+354,SanTan Brewing Company,33.30346762,-111.8421548
+355,James Page Brewing Company,46.48836071,-93.1404603
+356,Gonzo's BiggDogg Brewing,42.29105833,-85.5895586
+357,Rising Tide Brewing Company,43.66575308,-70.25708694
+358,Rivertowne Brewing Company,40.4214747,-79.63554209
+359,Sixpoint Craft Ales,40.67408329,-74.01196725
+360,Flying Mouse Brewery,37.4093728,-79.90051476
+361,Pipeworks Brewing Company,41.9183345,-87.72544772
+362,Flesk Brewing Company,42.15605579,-88.13875713
+363,Latitude 42 Brewing Company,42.30056207,-85.66858087
+364,4 Hands Brewing Company,38.61514819,-90.19771882
+365,SlapShot Brewing Company,41.83385636,-87.73246553
+366,Red Shedman Farm Brewery and Hop...,39.42310647,-77.19262835
+367,Two Brothers Brewing Company,41.82456591,-88.21190082
+368,Bent Paddle Brewing Company,46.76866404,-92.12064582
+369,Speakasy Ales & Lagers,37.7383713,-122.3808579
+370,Black Tooth Brewing Company,44.80104015,-106.9536462
+371,Keweenaw Brewing Company,47.12226149,-88.56866144
+372,Grey Sail Brewing Company,41.38504312,-71.83247295
+373,Broad Brook Brewing LLC,41.95948262,-72.66337404
+374,Madtree Brewing Company,41.95951453,-72.6634706
+375,Jackie O's Pub & Brewery,39.15645483,-84.42396299
+376,Tröegs Brewing Company,40.29729679,-76.64306056
+377,Christian Moerlein Brewing Company,39.11646402,-84.51937359
+378,Coastal Extreme Brewing Company,41.5158233,-71.31557189
+379,Lone Tree Brewing Company,39.56275307,-104.892872
+380,Glabrous Brewing Company,43.9026295,-70.25923076
+381,Bonfire Brewing Company,39.65549504,-106.8286781
+382,Thomas Hooker Brewing Company,41.80934392,-72.71059244
+383,"Woodstock Inn, Station & Brewery",44.03260018,-71.68696595
+384,Mother Earth Brew Company,33.16785697,-117.2201994
+385,Jailbreak Brewing Company,39.12460641,-76.8234558
+386,Smartmouth Brewing Company,36.86671648,-76.30901856
+387,Base Camp Brewing Co.,45.519996,-122.6560873
+388,Southern Star Brewing Company,30.35867794,-95.477523
+389,Horny Goat Brew Pub,43.0197847,-87.90937344
+390,Cheboygan Brewing Company,45.64341889,-84.47824174
+391,Center of the Universe Brewing C...,37.7088841,-77.44698769
+392,Uncle Billy's Brewery and Smokeh...,30.26245685,-97.76117263
+393,Southern Prohibition Brewing Com...,31.33020733,-89.28977886
+394,Hops & Grains Brewing Company,30.82536824,-97.65756603
+395,Sietsema Orchards and Cider Mill,43.00103622,-85.45954262
+396,Core Brewing & Distilling Company,36.20675876,-94.1336745
+397,Independence Brewing Company,31.51443074,-97.59931752
+398,Cigar City Brewing Company,27.95922819,-82.50929192
+399,Narragansett Brewing Company,41.81851928,-71.39048151
+400,Platform Beer Company,41.4801519,-81.71407736
+401,Odyssey Beerwerks,39.80102925,-105.0587615
+402,Lonerider Brewing Company,35.90365927,-78.76254657
+403,Tin Roof Brewing Company,30.43288555,-91.18884327
+404,2 Towns Ciderhouse,44.56365014,-123.2260699
+405,Caldera Brewing Company,42.18212723,-122.6626491
+406,Greenbrier Valley Brewing Company,37.86387696,-80.39864116
+407,Boxcar Brewing Company,39.96097919,-75.6010635
+408,Crooked Fence Brewing Company,43.64624171,-116.2680922
+409,Spiteful Brewing Company,41.97990743,-87.68026985
+410,Seventh Son Brewing Company,39.98539586,-82.99930856
+411,Vander Mill Ciders,42.97161203,-85.62982097
+412,Pedernales Brewing Company,30.23952718,-98.86788325
+413,Modern Monks Brewery,40.81517645,-96.70450117
+414,Snake River Brewing Company,43.47692397,-110.7646813
+415,Goodlife Brewing Co.,44.05144479,-121.3297148
+416,Fearless Brewing Company,45.28759224,-122.3350291
+417,Upland Brewing Company,39.79571138,-86.09857874
+418,Mehana Brewing Co.,19.706312,-155.0690619
+419,Hawai'i Nui Brewing Co.,19.7063322,-155.069094
+420,Branchline Brewing Company,29.56149315,-98.42826743
+421,Grapevine Craft Brewery,32.93278019,-97.07454728
+422,Buffalo Bayou Brewing Company,29.77283861,-95.37958679
+423,Texian Brewing Co.,29.61219178,-95.74355574
+424,Forgotten Boardwalk,39.91210547,-74.96910567
+425,Laughing Dog Brewing Company,48.30465691,-116.5418621
+426,Big Storm Brewing Company,27.93679763,-82.69412238
+427,Carton Brewing Company,40.41205962,-74.03804326
+428,Midnight Sun Brewing Company,61.14736239,-149.8445639
+429,DC Brau Brewing Company,38.92968476,-76.96014022
+430,Geneva Lake Brewing Company,42.58368417,-88.41121427
+431,Rochester Mills Brewing Company,42.68091542,-83.13136603
+432,Cape Ann Brewing Company,42.62282807,-70.67158735
+433,Borderlands Brewing Company,32.22638336,-110.9702671
+434,Joseph James Brewing Company,36.03851515,-115.0302131
+435,Devil's Backbone Brewing Company,37.82242131,-79.40015324
+436,Wiseacre Brewing Company,35.13704267,-90.05536187
+437,Infamous Brewing Company,30.40715973,-97.92593132
+438,Lucky Town Brewing Company,32.31980755,-90.18848217
+439,Quest Brewing Company,34.84671299,-82.34502384
+440,Southampton Publick House,40.88330114,-72.39152695
+441,Meckley's Cidery,42.05904659,-84.40606703
+442,Finch's Beer Company,41.88627999,-87.67206145
+443,Peak Organic Brewing Company,42.28071066,-83.74939784
+444,Great Raft Brewing Company,32.48883732,-93.75605746
+445,Alaskan Brewing Company,58.35894868,-134.4868928
+446,Indeed Brewing Company,45.18936301,-93.27545409
+447,Saint Archer Brewery,32.88077497,-117.1631277
+448,Black Shirt Brewing Company,39.7698732,-104.9728908
+449,Widmer Brothers Brewing Company,45.54121361,-122.6765037
+450,Matt Brewing Company,43.10462925,-75.24549916
+451,Boston Beer Company,42.31486488,-71.10313347
+452,Magic Hat Brewing Company,44.42919783,-73.21348446
+453,Payette Brewing Company,43.6134858,-116.2153096
+454,Sockeye Brewing Company,43.62051651,-116.3384365
+455,Slanted Rock Brewing Company,43.59184801,-116.366061
+456,Piney River Brewing Company,37.32148885,-92.01833629
+457,Cutters Brewing Company,39.76207276,-86.34558562
+458,Banner Beer Company,42.40372958,-72.7464652
+459,Claremont Craft Ales,34.10941781,-117.7017953
+460,Rivertown Brewing Company,39.44621696,-84.39834509
+461,D.L. Geary Brewing Company,43.70813946,-70.31422336
+462,Pisgah Brewing Company,35.6068092,-82.35674792
+463,Neshaminy Creek Brewing Company,40.08554962,-74.90179543
+464,The Just Beer Project,44.45714892,-73.22043565
+465,Dead Armadillo Craft Brewing,36.15569145,-95.9794811
+466,La Cumbre Brewing Company,35.14891838,-106.6876159
+467,The Traveler Beer Company,44.47399664,-73.21868087
+468,Uncle John's Fruit House Winery,43.11282446,-84.56203684
+469,Wolf Hills Brewing Company,36.71283209,-81.96435592
+470,Manzanita Brewing Company,32.752194,-117.1805021
+471,Four Horsemen Brewing Company,41.66830964,-86.24378767
+472,Westfield River Brewing Company,42.07470718,-72.76848236
+473,Wild Onion Brewing Company,42.18653702,-88.18370212
+474,Hilliard's Beer,47.66477779,-122.3780255
+475,Mustang Brewing Company,35.47289119,-97.60035099
+476,Airways Brewing Company,47.41321408,-122.2248286
+477,Pizza Port Brewing Company,33.16000282,-117.3473927
+478,7venth Sun,28.0165719,-82.78943759
+479,RoughTail Brewing Company,35.60885343,-97.51906181
+480,Lucette Brewing Company,44.87539115,-91.93956345
+481,Grey Sail Brewing of Rhode Island,41.38501093,-71.83176485
+482,Swashbuckler Brewing Company,40.22727065,-76.42948166
+483,Shipyard Brewing Company,43.66158859,-70.24845683
+484,Alltech's Lexington Brewing Company,38.05817624,-84.48596435
+485,Oskar Blues Brewery (North Carol...,35.25368339,-82.70603533
+486,White Flame Brewing Company,42.86446172,-85.86980013
+487,Ruhstaller Beer Company,38.5800743,-121.4967104
+488,Amnesia Brewing Company,45.54965453,-122.6747323
+489,Wolverine State Brewing Company,42.26946954,-83.77375969
+490,Red Tank Cider Company,44.04666217,-121.2946475
+491,Cascadia Ciderworks United,45.53621829,-122.6634241
+492,Lazy Monk Brewing,44.81559231,-91.50788116
+493,Seattle Cider Company,47.56064909,-122.3386593
+494,Coastal Empire Beer Company,32.05268639,-81.12263358
+495,Jack's Hard Cider (Hauser Estate...,39.79477812,-77.20079318
+496,Coalition Brewing Company,45.5224184,-122.6376772
+497,Redstone Meadery,40.02494276,-105.2428393
+498,Blue Dog Mead,44.05711816,-123.0971367
+499,Hess Brewing Company,32.76425276,-117.2426942
+500,Ciderboys,44.53175247,-89.57348929
+501,Roanoke Railhouse Brewery,37.24400921,-79.96183232
+502,Schlafly Brewing Company,38.61820027,-90.29011514
+503,Lost Rhino Brewing Company,39.01631056,-77.4750584
+504,Angry Orchard Cider Company,39.11453697,-84.52169271
+505,Southern Oregon Brewing Company,42.35660294,-122.8587697
+506,MillKing It Productions,42.53429504,-83.17666485
+507,Pateros Creek Brewing Company,40.5901995,-105.0759642
+508,Mavericks Beer Company,37.50434573,-122.4849142
+509,TailGate Beer,32.70742795,-117.1522155
+510,Dad & Dude's Breweria,39.59409619,-104.8059675
+511,Centennial Beer Company,41.97675134,-87.24318856
+512,The Black Tooth Brewing Company,44.80098686,-106.9529917
+513,Armstrong Brewing Company,37.65572485,-122.4130975
+514,AC Golden Brewing Company,39.75931705,-104.9823986
+515,Big Bend Brewing Company,30.34818229,-103.6972208
+516,Brindle Dog Brewing Company,28.04358895,-82.62461799
+517,Terrapin Brewing Company,33.98060843,-83.3963626
+518,Pete's Brewing Company,29.57650894,-98.47681979
+519,Crystal Springs Brewing Company,39.96100643,-105.1182511
+520,Tonka Beer Company,44.98371271,-93.18616675
+521,Good People Brewing Company,33.50714305,-86.81136178
+522,Telluride Brewing Company,37.94638642,-107.8758471
+523,7 Seas Brewing Company,47.32832565,-122.5766364
+524,MacTarnahans Brewing Company,45.54147587,-122.7120893
+525,Stillmank Beer Company,44.50481476,-87.97811545
+526,Stone Coast Brewing Company,43.71038,-70.30599
+527,Broken Tooth Brewing Company,62.6534213,-151.072898
+528,Seven Brides Brewery,45.0141211,-122.7849621
+529,Dry Dock Brewing Company,40.03231624,-103.9660493
+530,Sprecher Brewing Company,43.09967348,-87.9188798
+531,Woodchuck Hard Cider,44.03660119,-73.16479359
+532,Krebs Brewing Company (Pete's Pl...,34.92638197,-95.72441736
+533,Warbird Brewing Company,40.98805715,-85.16601112
+534,Spilker Ales,40.50594475,-96.70709948
+535,Arctic Craft Brewery,38.83713501,-104.780773
+536,Monkey Paw Pub & Brewery,32.71393722,-117.1489519
+537,Emerald City Beer Company,47.5767619,-122.3202002
+538,Big River Brewing Company,35.05560573,-85.30733613
+539,Uncommon Brewers,36.98211465,-122.0304563
+540,Bomb Beer Company,40.72686291,-73.99493324
+541,Churchkey Can Company,47.60240565,-122.1874824
+542,Buckbean Brewing Company,39.49420826,-119.7488307
+543,Flat Rock Brewing Company,40.1536359,-79.74343013
+544,Harvest Moon Brewing Company,47.38503081,-110.9296313
+545,Mother Earth Brewing Company,35.26269086,-77.58167906
+546,Arcadia Brewing Company,42.32226485,-85.18481657
+547,Angry Minnow Brewing Company,46.01061674,-91.48788984
+548,Upstate Brewing Company,42.13343244,-76.81193952
+549,Mogollon Brewing Company,35.21853469,-111.5862772
+550,Dave's Brewfarm,44.9736097,-92.17533902
+551,Butternuts Beer and Ale,42.62370082,-75.19087535
