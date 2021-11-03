@@ -1,0 +1,8 @@
+name: "Luke Stodgel"
+navbar:
+  title: "Luke Stodgel"
+  left:
+    - text: "About Me"
+      href: index.html
+    - text: "Beer Study"
+      href: Project1.html
