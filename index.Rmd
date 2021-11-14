@@ -4,6 +4,7 @@ author: Luke Stodgel
 date: November 2, 2021
 output: html_document
 ---
+
 <br>
 ![my-picture](IMG_0900.JPEG){width=13%}
 <br>
