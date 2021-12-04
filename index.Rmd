@@ -6,7 +6,9 @@ output: html_document
 ---
 <br>
 
-[Link to my RShiny Beer Data Analysis App](https://lukestodgel.shinyapps.io/LukeBShinyApp/)
+[Link to my RShiny Beer Data Analysis App](https://lukestodgel.shinyapps.io/LukeBShinyApp/)<br>
+[Link to my Workplace Data Analysis Project Video](https://youtu.be/HW_8mqiiL2I)<br>
+[Link to my Beer Data Analysis Project Video](https://youtu.be/LJXjFUs8SFY)
 
 <br>
 ![my-picture](IMG_0900.JPEG){width=13%}
