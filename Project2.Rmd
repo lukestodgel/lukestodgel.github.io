@@ -1,0 +1,287 @@
+---
+title: "Case Study 2"
+author: "Luke Stodgel"
+date: "12/4/2021"
+output: html_document
+---
+# Github: https://github.com/lukestodgel/DDSProject2
+# Youtube: https://youtu.be/HW_8mqiiL2I
+#Summary of the Project
+#Our goal was to perform an EDA, find the top three variables in the data that contributed to attrition, and find variables that supported the creation of a predictive linear regression model that was accurate within $3000.
+#In the first code chunk I included all of the packages needed to perform the tasks in the project as well as set up the data for use.
+#I tested many variables that I thought might contribute to attrition, but the only three I could find that created a good enough model were Business Travel, Relationship Status, and Years Since Last Promotion.
+#I tested these variables using Knn, Knn.cv and NB, and found that Knn.cv gave the best results.
+#For the linear regression model the variables that created the most accurate predictions for salary were Total Working Years and Job Role. A hypothesis test is included within this block of code also.
+#Finally, for fun I found that the percentage of people age 18-40 who left their jobs was 18.32% and for people age 40-60 11.18% of them left their jobs.
+# Also I looked to see what percentage of men and women left their jobs. 16.86% of men left their jobs compared to 14.97% of women.
+# Thank you!
+```{r echo=FALSE}
+
+#packages
+library(naniar)
+library(magrittr)
+library(ggplot2)
+library(e1071)
+library(dplyr)
+library(caret)
+library(class)
+library(tidyverse)
+library(ModelMetrics)
+library(fpp2)
+
+#column references: age 2, department 6, hourly rate 14, job involvement 15, joblevel 16, job satisfaction 18, monthly income 20, relationship satisfaction 27, work life balance 32, years in current role 34, years since last promotion 35, years with current manager 36
+
+jobData = read.csv(file.choose(),header = TRUE)
+
+#visually look for clues about data that cause attrition
+#jobData %>% filter(Attrition == "Yes")
+
+#Create new data set as to not destroy the original
+jobData2 <- jobData
+
+#Convert business travel to numeric
+jobData2$BusinessTravel <- as.numeric(factor(jobData2$BusinessTravel))
+#Convert department to numeric
+jobData2$Department <- as.numeric(factor(jobData2$Department))
+#Convert Gender to numeric
+jobData2$Gender <- as.numeric(factor(jobData2$Gender))
+
+splitPerc = .70
+
+trainIndicies = sample(1:dim(jobData2)[1], round(splitPerc * dim(jobData2)[1]))
+
+jobDataTrain =  jobData2[trainIndicies,]
+jobDataTest  =  jobData2[-trainIndicies,]
+```
+
+#Knn test
+
+```{r echo=FALSE}
+set.seed(100)
+iterations = 100
+numks = 10
+splitPerc = .70
+
+masterAcc = matrix(nrow = iterations, ncol = numks)
+masterSensitivity = matrix(nrow=iterations, ncol=numks)
+masterSpecificity = matrix(nrow=iterations, ncol=numks)
+
+for(j in 1:iterations)
+{
+
+  trainIndicies = sample(1:dim(jobData2)[1], round(splitPerc * dim(jobData2)[1]))
+  jobDataTrain =  jobData2[trainIndicies,]
+  jobDataTest  =  jobData2[-trainIndicies,]
+  for(i in 1:numks)
+  {
+    classifications = knn(jobDataTrain[,c(4,27,35)],jobDataTest[,c(4,27,35)], jobDataTrain$Attrition, prob = TRUE, k = i)
+    table(classifications,jobDataTest$Attrition)
+    CM = caret::confusionMatrix(table(classifications,jobDataTest$Attrition))
+    masterAcc[j,i] = CM$overall[1]
+    masterSensitivity[j, i] = mean(CM$byClass[1], na.rm = TRUE)
+    masterSpecificity[j, i] = mean(CM$byClass[2], na.rm = TRUE)
+  }
+}
+
+MeanAcc = colMeans(masterAcc)
+MeanSens = colMeans(masterSensitivity)
+MeanSpec = colMeans(masterSpecificity)
+
+plot(seq(1,numks,1),MeanAcc, xlab = "K Value", ylab = "Accuracy", main = "Accuracy vs K Value")
+plot(seq(1,numks,1),MeanSens, xlab = "K Value", ylab = "Sensitivity", main = "Sensitivity vs K Value")
+plot(seq(1,numks,1),MeanSpec, xlab = "K Value", ylab = "Specificity", main = "Specificity vs K Value")
+
+CM
+
+which.max(MeanAcc)
+which.max(MeanSens)
+which.max(MeanSpec)
+
+max(MeanAcc)
+max(MeanSens)
+max(MeanSpec)
+```
+
+#Knn.cv test
+
+```{r echo=FALSE}
+#Writing the best results to a DF
+regressionDF <- knn.cv(jobData2[,c(4,27,35)],jobData2[,3],k=3)
+write.csv(regressionDF,"C:\\Users\\Luke\\Documents\\SMU\\classnotes\\1Fall 2021\\Doing Data Science  DS 6306\\DDSProject2\\Luke_Predictions_Classification.csv", row.names = FALSE)
+
+
+set.seed(10)
+iterations = 100
+numks = 3   #Made no different after about k=10
+
+masterAcc = matrix(nrow = iterations, ncol = numks)
+masterSensitivity = matrix(nrow=iterations, ncol=numks)
+masterSpecificity = matrix(nrow=iterations, ncol=numks)
+
+for(j in 1:iterations)
+{
+  
+  for(i in 1:numks)
+  {
+    CM = caret::confusionMatrix(table(jobData2[,3],knn.cv(jobData2[,c(4,27,35)],jobData2[,3],k=i)))
+    masterAcc[j,i] = CM$overall[1]
+    masterSensitivity[j, i] <- mean(CM$byClass[1], na.rm = TRUE)
+    masterSpecificity[j, i] <- mean(CM$byClass[2], na.rm = TRUE)
+  }
+  
+}
+
+#Store mean accuracy, sensitivity and specificity for each k
+MeanAcc = colMeans(masterAcc)
+MeanSens = colMeans(masterSensitivity)
+MeanSpec = colMeans(masterSpecificity)
+
+# plot each accuracy, sensitivity, specificity at each K value
+plot(seq(1,numks,1),MeanAcc, xlab = "K Value", ylab = "Accuracy", main = "Accuracy vs K Value")
+plot(seq(1,numks,1),MeanSens, xlab = "K Value", ylab = "Sensitivity", main = "Sensitivity vs K Value")
+plot(seq(1,numks,1),MeanSpec, xlab = "K Value", ylab = "Specificity", main = "Specificity vs K Value")
+
+CM
+
+which.max(MeanAcc)
+which.max(MeanSens)
+which.max(MeanSpec)
+
+max(MeanAcc)
+max(MeanSens)
+max(MeanSpec)
+
+```
+
+#NB test
+
+```{r echo=FALSE}
+iterations = 100
+
+masterAccNB = matrix(nrow = iterations)
+masterSensitivityNB = matrix(nrow=iterations)
+masterSpecificityNB = matrix(nrow=iterations)
+
+for(j in 1:iterations)
+{
+  set.seed(j)
+  trainIndicies = sample(1:dim(jobData2)[1], round(splitPerc * dim(jobData2)[1]))
+  jobDataTrain =  jobData2[trainIndicies,]
+  jobDataTest  =  jobData2[-trainIndicies,]
+  
+  model = naiveBayes(jobDataTrain[,c(4,27,35)],jobDataTrain$Attrition, laplace = 1)
+  table(predict(model,jobDataTest[,c(4,27,35)]),jobDataTest$Attrition)
+  CM = caret::confusionMatrix(table(predict(model,jobDataTest[,c(4,27,35)]),jobDataTest$Attrition))
+  
+  masterAccNB[j] = CM$overall[1]
+  masterSensitivityNB[j] = mean(CM$byClass[1], na.rm = TRUE)
+  masterSpecificityNB[j] = mean(CM$byClass[2], na.rm = TRUE)
+}
+
+plot(seq(1,100,1),masterAccNB, xlab = "NB Iteration", ylab = "Accuracy", main = "Accuracy vs K Value")
+plot(seq(1,100,1),masterSensitivityNB, xlab = "NB Iteration", ylab = "Sensitivity", main = "Sensitivity vs K Value")
+plot(seq(1,100,1),masterSpecificityNB, xlab = "NB Iteration", ylab = "Specificity", main = "Specificity vs K Value")
+
+CM
+
+which.max(masterAccNB)
+which.max(masterSensitivityNB)
+which.max(masterSpecificityNB)
+
+max(masterAccNB)
+max(masterSensitivityNB)
+max(masterSpecificityNB)
+
+```
+
+#Linear Regression Equation and Hypothesis Test
+
+```{r echo = FALSE}
+set.seed(4)
+
+
+trainIndicies = sample(1:dim(jobData2)[1], round(.75 * dim(jobData2)[1]))
+jobDataTrain =  jobData2[trainIndicies,]
+jobDataTest  =  jobData2[-trainIndicies,]
+
+#model <- lm(MonthlyIncome~NumCompaniesWorked+TotalWorkingYears+YearsInCurrentRole,data=jobDataTrain) # RMSE 2673
+#model <- lm(MonthlyIncome~TotalWorkingYears+YearsInCurrentRole,data=jobDataTrain) # RMSE 2688
+#model <- lm(MonthlyIncome~TotalWorkingYears,data=jobDataTrain) # RMSE 2658
+#model <- lm(MonthlyIncome~JobRole,data=jobDataTrain) # RMSE 2086
+
+model <- lm(MonthlyIncome~JobRole+TotalWorkingYears,data=jobDataTrain) #RMSE 1600.099
+summary(model)
+confint(model)
+
+# Make predictions
+predictions <- model %>% predict(jobDataTest)
+
+#export to csv file
+predsDF <- c(MonthlyIncomePreds = predictions)
+write.csv(predsDF,"C:\\Users\\Luke\\Documents\\SMU\\classnotes\\1Fall 2021\\Doing Data Science  DS 6306\\DDSProject2\\Luke_Predictions_Regression.csv", row.names = FALSE)
+
+# Model performance
+# (a) Compute the prediction error, RMSE -- indicates absolute fit of the model to the data.
+RMSE(predictions, jobDataTest$MonthlyIncome)
+
+# (b) Compute R-square -- how well the model fits the data - amount of variance explained by the model. It's a percentage
+R2(predictions, jobDataTest$MonthlyIncome)
+
+# plot best predictive model
+jobData2 %>% ggplot(aes(x=MonthlyIncome, y = TotalWorkingYears, color = JobRole)) + geom_point() + geom_smooth( aes(color = "red")) + ggtitle("Monthly Income vs Total Working Years") #scale_color_discrete(name = "Predicted")
+
+```
+
+
+# Step 1 Declare Null Hypothesis
+# Ho = 0
+
+# Step 2 Declare Alternate Hypothesis
+# Ho != 0
+
+# Step 3 Calculate Critical Value
+# P value = <2.2e-16 for all but two job roles
+# Manufacturing Director p value = 0.279 (greater than 0.05)
+# Sales Executive p value = 0.708 (greater than 0.05)
+
+# Step 4 Calculate Test Statistic
+# T values for the intercept is 18.375.
+# The T values for each of the different job roles varied and all but two job roles had T values that were too small to be considered significant. 
+# Total Working years had a T value of 17.098.
+
+# Step 5 Statistical Decision
+# We reject the null hypothesis for all job roles and total working years except if the job role is a Manufacturing Director or Sales Executive. 
+# For Manufacturing Directors and Sales Executives we can't, with extreme certainty, declare that their role + total working years has a significant difference on their salary.
+
+# Step 6 Word the Statistical Decision into Readable Format
+# We are 95% confident that, as the numeric representation of job role + total working years increases by one, total monthly income will increase on average by between .0008657 and .000875.
+
+
+
+# What percentage of people age 18-40 leave their jobs? And 40-60?
+
+```{r echo=FALSE}
+age40orLess = jobData2 %>% filter(Age >= 18 & Age <= 40)
+age40orLessAttritionYes = jobData2 %>% filter(Age >= 18 & Age <= 40 & Attrition == "Yes")
+age40orLessAttritionPercentage = (dim(age40orLessAttritionYes)[1] / dim(age40orLess)[1])
+age40orLessAttritionPercentage # 18.32%
+
+age40to60 = jobData2 %>% filter(Age >= 40 & Age <= 60)
+age40to60AttritionYes = jobData2 %>% filter(Age >= 40 & Age <= 60 & Attrition == "Yes")
+age40to60AttritionPercentage = (dim(age40to60AttritionYes)[1] / dim(age40to60)[1])
+age40to60AttritionPercentage # 11.18%
+```
+
+
+# What percentage of men leave their jobs vs women?
+```{r echo=FALSE}
+numMen = jobData %>% filter(Gender == "Male")
+numMenAttritionYes = jobData %>% filter(Gender == "Male" & Attrition == "Yes")
+numMenAttritionPercentage = (dim(numMenAttritionYes)[1] / dim(numMen)[1])
+numMenAttritionPercentage # 16.86%
+
+numWomen = jobData %>% filter(Gender == "Female")
+numWomenAttritionYes = jobData %>% filter(Gender == "Female" & Attrition == "Yes")
+numWomenAttritionPercentage = (dim(numWomenAttritionYes)[1] / dim(numWomen)[1])
+numWomenAttritionPercentage # 14.97%
+```
